@@ -1,0 +1,65 @@
+version: "3.1"
+
+stories:
+
+  - story: chào hỏi đưa tên
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: give_name
+      - action: utter_greet_with_name
+      - intent: ask_name
+      - action: utter_ask_name
+      - intent: bye
+      - action: utter_bye
+
+  - story: đưa tên luôn
+    steps:
+      - intent: give_name
+      - action: utter_greet_with_name
+
+  - story: chào - tên - hỏi chức năng - chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_name
+      - action: utter_ask_name
+      - intent: ask_func_list
+      - action: utter_func_list
+      - intent: bye
+      - action: utter_bye
+
+  - story: chào - hỏi chức năng - chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_func_list
+      - action: utter_func_list
+      - intent: bye
+      - action: utter_bye
+
+  - story: chào - hỏi tên - chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_name
+      - action: utter_ask_name
+      - intent: bye
+      - action: utter_bye
+
+  - story: hỏi tên - hỏi chức năng
+    steps:
+      - intent: ask_name
+      - action: utter_ask_name
+      - intent: ask_func_list
+      - action: utter_func_list
+
+  - story: cảm ơn
+    steps:
+      - intent: thank
+      - action: utter_thank
+
+  - story: trả lời câu hỏi về sản phẩm
+    steps:
+      - intent: give_product
+      - action: action_get_product_details

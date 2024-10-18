@@ -69,6 +69,7 @@ nlu:
       - cảm ơn em
       - cảm ơn em nhiều nhé
       - cảm ơn
+      - giỏi
 
   - intent: ask_func_list
     examples: |

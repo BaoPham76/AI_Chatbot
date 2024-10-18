@@ -83,8 +83,8 @@ class ActionGetProductDetails(Action):
             response = ""
             # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
             for row in results:
-                product_name, price_sell = row
-                response += f"Sản phẩm: {product_name}\nGiá: {price_sell} VND\n"
+                product_name, price_sell, img = row
+                response += f"Sản phẩm: {product_name}\nGiá: {price_sell} VND\nẢnh: {img}\n---\n"
         else:
             # Nếu không tìm thấy sản phẩm, thông báo lỗi
             response = f"Không tìm thấy sản phẩm với tên '{product_name}'"

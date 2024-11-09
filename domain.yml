@@ -1,20 +1,40 @@
 version: "3.1"
 
 intents:
+  - give_name
   - greet
-  - thank
   - bye
+  - thank
   - ask_func_list
   - ask_name
-  - give_name
-  - give_product
+  - specify_brand
+  - specify_gender
+  - buy_watch
+  - purchase_process
+  - return_policy
+  - track_order
+
 
 entities:
   - cust_sex
   - cust_name
-  - product_name
+  - brand
+  - gender
+
+forms:
+  order_form:
+    required_slots:
+      - order_id
 
 slots:
+  order_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: order_form
+            requested_slot: order_id
   cust_sex:
     type: text
     mappings:
@@ -25,32 +45,60 @@ slots:
     mappings:
       - type: from_entity
         entity: cust_name
-  product_name:
+  brand:
     type: text
     mappings:
       - type: from_entity
-        entity: product_name
+        entity: brand
+  gender:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: gender
+  bot_position:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+    initial_value: "Em"
+
 
 responses:
   utter_greet:
     - text: "Kính chào Quý khách! Quý khách vui lòng cho biết tên để tiện xưng hô được không ah?"
   utter_greet_with_name:
-    - text: "Kính chào {cust_sex} {cust_name}. XYZShop có thể giúp gì được {cust_sex} {cust_name} ạ?"
+    - text: "Kính chào {cust_sex}{cust_name}. WatchStyle có thể giúp gì được {cust_sex}{cust_name} ạ?"
   utter_bye:
     - text: "Kính chào tạm biệt và mong sớm gặp lại quý khách!"
     - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành!"
   utter_thank:
     - text: "Cảm ơn quý khách quá khen ah!"
-    - text: "Dạ không có gì, đó là trách nhiệm của em mà!"
+    - text: "Dạ không có gì, đó là trách nhiệm của {bot_position} mà!"
   utter_func_list:
-    - text: "Em có thể làm được rất nhiều thứ: hát, đọc thơ, đọc chuyện... nhưng giờ em chỉ chat thôi!"
+    - text: "{bot_position} có thể làm được rất nhiều thứ: hát, đọc thơ, đọc chuyện... nhưng giờ {bot_position} chỉ chat thôi!"
+    - text: "{bot_position} có khả năng hỗ trợ nhiều dịch vụ khác nhau, Quý khách muốn hỏi về điều gì ạ?"
+    - text: "{bot_position} có thể giúp Quý khách tìm kiếm thông tin sản phẩm, hỗ trợ đặt hàng, và nhiều điều khác nữa!"
   utter_ask_name:
-    - text: "Em họ Bank, tên Bot! Người ta hay gọi em là Bank Bot thông minh xinh đẹp giỏi giang nhất vũ trụ ạ! Quý khách cần trợ giúp gì ạ?"
-    - text: "Dạ thưa. Tên Tiếng Việt của em là Trợ lý ảo Ngân hàng nhưng em thích gọi bằng tên Tiếng Anh là Bank Bot cho nó Tây!"
+    - text: "{bot_position} họ Chat, tên Bot! Người ta hay gọi {bot_position} là Chat Bot thông minh xinh đẹp giỏi giang nhất vũ trụ ạ! Quý khách cần trợ giúp gì ạ?"
+    - text: "Dạ thưa. Tên Tiếng Việt của {bot_position} là Trợ lý ảo nhưng {bot_position} thích gọi bằng tên Tiếng Anh là ChatBot cho nó Tây!"
   utter_unclear:
-    - text: "Thưa quý khách, hiện tại tôi chưa hiểu được yêu cầu của Quý khách."
-  utter_ask_product:
-    - text: "Bạn đang muốn hỏi về sản phẩm nào ạ?"
+    - text: "Xin lỗi, em chưa hiểu rõ yêu cầu của quý khách. Quý khách có thể nói rõ hơn được không ạ?"
+    - text: "Dạ, em không chắc là em đã hiểu. Quý khách vui lòng giải thích thêm nhé!"
+  utter_specify_brand:
+    - text: "Quý khách muốn mua đồng hồ của hãng nào? Có thể là Casio, Citizen, Seiko hay hãng khác mà quý khách thích?"
+    - text: "Quý khách có thương hiệu đồng hồ nào trong tâm trí không? Như Casio, Citizen hay Seiko, chẳng hạn?"
+  utter_specify_gender:
+    - text: "Quý khách muốn mua đồng hồ cho Nam, Nữ hay Unisex?"
+  utter_purchase_process:
+    - text: "Quy trình mua hàng rất đơn giản. Bạn chỉ cần chọn sản phẩm yêu thích, thêm vào giỏ hàng, sau đó tiến hành thanh toán. Nếu cần hỗ trợ thêm, tôi luôn sẵn sàng giúp bạn."
+  utter_return_policy:
+    - text: "Bạn có thể đổi trả hàng trong vòng 7 ngày kể từ khi nhận hàng nếu sản phẩm không đáp ứng mong đợi của bạn."
+  utter_ask_order_id:
+    - text: "Vui lòng cung cấp mã đơn hàng để tôi có thể kiểm tra."
+  utter_submit:
+    - text: "Ok. Thanks!"
+
+
 
 actions:
   - utter_greet
@@ -60,5 +108,12 @@ actions:
   - utter_func_list
   - utter_thank
   - utter_ask_name
-  - utter_ask_product
-  - action_get_product_details
+  - utter_specify_gender
+  - action_select_watch
+  - utter_specify_brand
+  - action_save_cust_info
+  - utter_purchase_process
+  - utter_return_policy
+  - utter_ask_order_id
+  - utter_submit
+  - action_track_order

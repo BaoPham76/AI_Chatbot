@@ -10,14 +10,14 @@ def create_connection():
     )
     return connection
 
-def get_product_details(product_name):
+def get_product_details(brand, gender):
     #Truy vấn sản phẩm từ cơ sở dữ liệu dựa trên tên sản phẩm
     connection = create_connection()
     cursor = connection.cursor()
 
     # Truy vấn tìm sản phẩm dựa trên tên
-    query = f"SELECT name, price_sell, img FROM products WHERE name LIKE '%{product_name}%'"
-    cursor.execute(query)
+    query = "SELECT name, price_sell, img FROM products WHERE name LIKE %s"
+    cursor.execute(query, (f"{brand} - {gender}%",))
 
     # Đọc kết quả
     results = cursor.fetchall()
@@ -27,3 +27,22 @@ def get_product_details(product_name):
     connection.close()
 
     return results
+
+
+def get_order_details(order_id):
+    # Kết nối đến cơ sở dữ liệu
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    # Truy vấn để lấy thông tin đơn hàng
+    query = "SELECT total_money, order_status, created_at, name, phone_number, city, district, ward, aparment_number FROM orders WHERE order_id = %s"
+    cursor.execute(query, (order_id,))
+
+    # Đọc kết quả
+    result = cursor.fetchone()
+
+    # Đóng kết nối
+    cursor.close()
+    connection.close()
+
+    return result

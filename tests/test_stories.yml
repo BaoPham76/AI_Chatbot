@@ -2,90 +2,87 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
+- story: greet user with name
   steps:
   - user: |
       hello there!
     intent: greet
   - action: utter_greet
   - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
+      Tên tôi là Minh
+    intent: give_name
+  - action: action_save_cust_info
+  - action: utter_greet_with_name
 
-- story: happy path 2
+- story: thank user
   steps:
   - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+      cảm ơn
+    intent: thank
+  - action: utter_thank
 
-- story: sad path 1
+- story: goodbye
   steps:
   - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
+      tạm biệt
+    intent: bye
+  - action: utter_bye
 
-- story: sad path 2
+- story: ask function list
   steps:
   - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
+      bạn có thể làm được những gì
+    intent: ask_func_list
+  - action: utter_func_list
 
-- story: sad path 3
+- story: ask bot's name
   steps:
   - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
+      bạn tên gì
+    intent: ask_name
+  - action: utter_ask_name
 
-- story: say goodbye
+- story: buy a watch no brand no gender
   steps:
   - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+      Tôi muốn mua đồng hồ
+    intent: buy_watch
+  - action: utter_specify_brand
+  - user: |
+      Tôi thích Casio
+    intent: specify_brand
+  - action: utter_specify_gender
+  - user: |
+      tôi cần đồng hồ nam
+    intent: specify_gender
+  - action: action_select_watch
 
-- story: bot challenge
+- story: buy a watch with gender first
   steps:
   - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+      tôi cần đồng hồ nữ
+    intent: specify_gender
+  - action: utter_specify_brand
+  - user: |
+      Tôi muốn mua Rolex
+    intent: specify_brand
+  - action: action_select_watch
+
+- story: buy a watch with brand first
+  steps:
+  - user: |
+      Tôi muốn mua đồng hồ Casio
+    intent: specify_brand
+  - action: utter_specify_gender
+  - user: |
+      đồng hồ unisex
+    intent: specify_gender
+  - action: action_select_watch
+
+- story: give name first
+  steps:
+  - user: |
+      Tên tôi là Hằng
+    intent: give_name
+  - action: action_save_cust_info
+  - action: utter_greet_with_name

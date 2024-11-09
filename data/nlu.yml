@@ -1,33 +1,39 @@
 version: "3.1"
+
 nlu:
   - intent: give_name
     examples: |
-      - [Anh](cust_sex) là [Thắng](cust_name)
-      - [Chị](cust_sex) là [Hằng](cust_name)
-      - [Em](cust_sex) là [Trang](cust_name)
-      - [Cô](cust_sex) [Vân](cust_name)
-      - [Chú](cust_sex) [Hùng](cust_name)
-      - [Tôi](cust_sex) tên [Bảo](cust_name)
-      - [Tên của tôi](cust_sex) là [An](cust_name)
-      - [Bạn](cust_sex) là [Nam](cust_name)
-      - [Ông](cust_sex) [Phát](cust_name)
-      - [Bà](cust_sex) [Nguyệt](cust_name)
-      - [Tôi](cust_sex) là [Gia](cust_name)
-      - [Chị](cust_sex) [Lan](cust_name)
-      - [Mình](cust_sex) là [Kiên](cust_name)
-      - [Bé](cust_sex) [Hoa](cust_name) dễ thương!
-      - [Gọi tôi](cust_sex) là [Duy](cust_name)
-
-  - intent: give_product
-    examples: |
-      - Bạn có [đồng hồ Rolex](product_name) không?
-      - Hãy cho tôi biết về [đồng hồ Omega](product_name)
-      - Giá của [đồng hồ Casio](product_name) là bao nhiêu?
-      - Tôi muốn mua [đồng hồ Tissot](product_name)
-      - Bạn có bán [đồng hồ Seiko](product_name) không?
-      - Tôi đang quan tâm đến [đồng hồ Citizen](product_name)
-      - Hãy tư vấn cho tôi về [đồng hồ Orient](product_name)
-      - Bạn có thể cho biết [đồng hồ Patek Philippe](product_name) hiện có giá bao nhiêu không?
+      - [Tên tôi](cust_sex) là [Minh](cust_name)
+      - [Anh](cust_sex) tên [Đức](cust_name)
+      - [Em](cust_sex) tên là [Linh](cust_name)
+      - [Chị](cust_sex) là [Ngọc](cust_name)
+      - [Cháu](cust_sex) tên là [Long](cust_name)
+      - [Ông](cust_sex) tên [Phúc](cust_name)
+      - [Bà](cust_sex) là [Liên](cust_name)
+      - [Con](cust_sex) tên [Hà](cust_name)
+      - [Cô](cust_sex) tên là [Lan](cust_name)
+      - [Chú](cust_sex) là [Toàn](cust_name)
+      - [Bé](cust_sex) là [Mai](cust_name)
+      - [Tên của mình](cust_sex) là [Tuấn](cust_name)
+      - [Mình](cust_sex) tên là [Khang](cust_name)
+      - [Gọi tôi](cust_sex) là [Thành](cust_name)
+      - [Tôi](cust_sex) là [Minh](cust_name)
+      - [Anh](cust_sex) là [Hải](cust_name)
+      - [Chú](cust_sex) [Tuấn](cust_name)
+      - [Chú](cust_sex) [Gia Tuấn](cust_name)
+      - [Cô](cust_sex) [Mai](cust_name)
+      - [Cô](cust_sex) [Xuân Mai](cust_name)
+      - [Anh](cust_sex) [Bảo](cust_name)
+      - [Anh](cust_sex) [Bảo Phạm](cust_name)
+      - [Chị](cust_sex) [Hằng](cust_name)
+      - [Chị](cust_sex) [Hằng Nga](cust_name)
+      - [Vũ](cust_name)
+      - [Xuân Vũ]((cust_name]
+      
+      
+      
+      
+      
 
   - intent: greet
     examples: |
@@ -139,3 +145,112 @@ nlu:
       - bạn tên là gì 
       - bạn tên gì thế
       - em tên gì
+
+
+
+  - intent: specify_brand
+    examples: |
+      - [Casio](brand)
+      - [Casio](brand) đi
+      - Tôi muốn mua [Citizen](brand)
+      - Tôi thích [Seiko](brand)
+      - Có đồng hồ [Fossil](brand) nào không?
+      - Tôi đang tìm kiếm [Rolex](brand)
+      - Bạn có [Tissot](brand) không?
+      - [Omega](brand) là một thương hiệu tốt
+
+  - intent: specify_gender
+    examples: |
+      - [Nam](gender)
+      - [Nữ](gender)
+      - [Unisex](gender)
+      - Tôi cần [đồng hồ](product_type) cho [Nam](gender)
+      - Tôi muốn một [đồng hồ](product_type) [Nữ](gender)
+      - Có đồng hồ [Unisex](gender) nào không?
+      - Bạn có mẫu [Nam](gender) nào đẹp không?
+      - [nam](gender)
+      - [nữ](gender)
+      - [unisex](gender)
+      - Đồng hồ [Nam](gender)
+      - Đồng hồ [Nữ](gender)
+      - Đồng hồ [Unisex](gender)
+      - đồng hồ [nam](gender)
+      - đồng hồ [nữ](gender)
+      - đồng hồ [unisex](gender)
+      - Mua đồng hồ [Nam](gender)
+      - Mua đồng hồ [Nữ](gender)
+      - Mua đồng hồ [nam](gender)
+      - Mua đồng hồ [nữ](gender)
+      - Tôi muốn mua đồng hồ [nam](gender)
+      - Tôi muốn mua đồng hồ [nữ](gender)
+      - Tôi cần mua đồng hồ [nam](gender)
+      - Tôi cần mua đồng hồ [nữ](gender)
+      - Tôi muốn tìm đồng hồ [nam](gender)
+      - Tôi muốn tìm đồng hồ [nữ](gender)
+      - Tôi đang tìm một chiếc đồng hồ [nam](gender)
+      - Tôi đang tìm một chiếc đồng hồ [nữ](gender)
+      - Giúp tôi với, tôi cần mua đồng hồ [nam](gender) tốt
+      - Giúp tôi với, tôi cần mua đồng hồ [nữ](gender) tốt?
+
+  - intent: buy_watch
+    examples: |
+      - Tôi muốn mua đồng hồ
+      - Mua đồng hồ
+      - Cho tôi xem đồng hồ
+      - Mình cần mua đồng hồ
+      - Đồng hồ nào đẹp
+      - Tôi muốn tìm một chiếc đồng hồ
+      - Có đồng hồ nào không?
+      - Bạn có mẫu đồng hồ nào không?
+      
+
+  - intent: purchase_process
+    examples: |
+      - Tôi muốn biết về quy trình mua hàng
+      - Làm sao để đặt hàng trên trang web?
+      - Bạn có thể hướng dẫn tôi đặt hàng không?
+      - Cách thức đặt hàng như thế nào?
+      - Tôi cần hướng dẫn về việc đặt hàng
+      - Mua hàng ở đây có dễ không?
+      - Tôi có thể đặt mua trực tuyến không?
+      - Quy trình mua hàng bao gồm những bước nào?
+      - Cách mua hàng trên trang như thế nào?
+      - Quy trình để mua một sản phẩm là gì?
+      - Có thể mua hàng qua website không?
+      - Hướng dẫn tôi cách đặt hàng với bạn
+      - Tôi cần giúp đỡ để đặt hàng
+      - Đặt hàng online như thế nào?
+      - Cần làm gì để đặt mua một món hàng?
+  - intent: return_policy
+    examples: |
+      - Chính sách đổi trả của shop như thế nào?
+      - Làm thế nào để tôi đổi trả sản phẩm?
+      - Chính sách đổi trả có khó không?
+      - Tôi có thể trả hàng trong bao lâu?
+      - Bạn có thể giải thích chính sách đổi trả không?
+      - Chính sách đổi trả của bạn ra sao?
+      - Hàng có thể đổi được không nếu không hài lòng?
+      - Nếu không thích, tôi có thể trả hàng không?
+      - Cửa hàng có nhận hàng trả lại không?
+      - Bao lâu thì tôi có thể đổi trả sản phẩm?
+      - Tôi muốn biết chính sách đổi trả
+      - Sản phẩm lỗi có thể trả lại không?
+      - Đổi trả sản phẩm thì phải làm sao?
+      - Tôi có được đổi trả nếu hàng bị lỗi không?
+      - Điều kiện để đổi trả hàng là gì?
+
+  - intent: track_order
+    examples: |
+      - Tôi muốn theo dõi đơn hàng
+      - Kiểm tra trạng thái đơn hàng của tôi
+      - Xem đơn hàng của tôi đang ở đâu
+      - Cho tôi biết thông tin về đơn hàng
+      - Đơn hàng của tôi đến đâu rồi?
+      - Theo dõi đơn hàng của tôi
+      - Tôi có thể biết tình trạng đơn hàng không?
+      - Đơn hàng của tôi đã được giao chưa?
+      - Kiểm tra đơn hàng
+      - Tôi muốn kiểm tra tình trạng đơn hàng
+
+
+      

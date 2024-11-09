@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-brand",
+      "2": "I-brand",
+      "3": "L-brand",
+      "4": "U-brand",
+      "5": "B-cust_name",
+      "6": "I-cust_name",
+      "7": "L-cust_name",
+      "8": "U-cust_name",
+      "9": "B-cust_sex",
+      "10": "I-cust_sex",
+      "11": "L-cust_sex",
+      "12": "U-cust_sex",
+      "13": "B-gender",
+      "14": "I-gender",
+      "15": "L-gender",
+      "16": "U-gender",
+      "17": "B-product_type",
+      "18": "I-product_type",
+      "19": "L-product_type",
+      "20": "U-product_type",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-brand": 1,
+      "I-brand": 2,
+      "L-brand": 3,
+      "U-brand": 4,
+      "B-cust_name": 5,
+      "I-cust_name": 6,
+      "L-cust_name": 7,
+      "U-cust_name": 8,
+      "B-cust_sex": 9,
+      "I-cust_sex": 10,
+      "L-cust_sex": 11,
+      "U-cust_sex": 12,
+      "B-gender": 13,
+      "I-gender": 14,
+      "L-gender": 15,
+      "U-gender": 16,
+      "B-product_type": 17,
+      "I-product_type": 18,
+      "L-product_type": 19,
+      "U-product_type": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

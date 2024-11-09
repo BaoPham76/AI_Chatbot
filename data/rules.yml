@@ -11,3 +11,20 @@ rules:
   - intent: ask_name
   - action: utter_ask_name
 
+
+- rule: Activate form
+  steps:
+  - intent: track_order
+  - action: order_form
+  - active_loop: order_form
+
+- rule: Submit form
+  condition:
+  - active_loop: order_form
+  steps:
+  - action: order_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_track_order

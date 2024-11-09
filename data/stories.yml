@@ -66,3 +66,18 @@ stories:
     steps:
       - intent: return_policy
       - action: utter_return_policy
+
+  - story: interactive story 1
+    steps:
+      - intent: track_order
+      - action: order_form
+      - active_loop: order_form
+      - slot_was_set:
+          - requested_slot: order_id
+      - slot_was_set:
+          - first_name: 1719061314924
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_submit
+      - action: action_track_order

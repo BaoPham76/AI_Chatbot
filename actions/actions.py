@@ -200,12 +200,22 @@ class ActionTrackOrder(Action):
 
         # Xử lý kết quả từ cơ sở dữ liệu
         if order_data:
-            total_money, order_status, created_at, name, phone_number, city, district, ward, aparment_number = order_data
+            total_money, order_status, created_at, name, phone_number, city, district, ward, apartment_number = order_data
             created_at_dt = datetime.strptime(str(created_at), "%Y-%m-%d %H:%M:%S")
             estimated_delivery_dt = created_at_dt + timedelta(days=7)
             estimated_delivery = estimated_delivery_dt.strftime("%d/%m/%Y")
+            if order_status == 0:
+                status_text = "Chờ xử lý"
+            elif order_status == 1:
+                status_text = "Đang giao hàng"
+            elif order_status == 2:
+                status_text = "Đã hủy"
+            elif order_status == 3:
+                status_text = "Đã nhận hàng"
+            else:
+                status_text = "Không xác định"
             response = (
-                f"Đơn hàng của bạn hiện đang ở trạng thái: {order_status}. "
+                f"Đơn hàng của bạn hiện đang ở trạng thái: {status_text}. "
                 f"Dự kiến giao hàng: {estimated_delivery}."
             )
         else:

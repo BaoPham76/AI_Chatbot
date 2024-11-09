@@ -75,7 +75,7 @@ stories:
       - slot_was_set:
           - requested_slot: order_id
       - slot_was_set:
-          - first_name: 1719061314924
+          - order_id: null
       - slot_was_set:
           - requested_slot: null
       - active_loop: null

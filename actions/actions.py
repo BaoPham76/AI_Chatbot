@@ -5,6 +5,8 @@ from __future__ import unicode_literals
 
 from datetime import datetime, timedelta
 
+import requests
+
 from .database import get_product_details, get_order_details
 
 from typing import Any, Text, Dict, List
@@ -204,26 +206,60 @@ class ActionTrackOrder(Action):
             created_at_dt = datetime.strptime(str(created_at), "%Y-%m-%d %H:%M:%S")
             estimated_delivery_dt = created_at_dt + timedelta(days=7)
             estimated_delivery = estimated_delivery_dt.strftime("%d/%m/%Y")
-            if order_status == 0:
-                status_text = "Chờ xử lý"
-            elif order_status == 1:
-                status_text = "Đang giao hàng"
-            elif order_status == 2:
-                status_text = "Đã hủy"
-            elif order_status == 3:
-                status_text = "Đã nhận hàng"
-            else:
-                status_text = "Không xác định"
+            name_text = name[0] + '*' * (len(name) - 2) + name[-1] if len(name) > 2 else name
+            phone_text = phone_number[:3] + '*' * (len(phone_number) - 5) + phone_number[-2:]
+            status_text = {
+                0: "Chờ xử lý",
+                1: "Đang giao hàng",
+                2: "Đã hủy",
+                3: "Đã nhận hàng"
+            }.get(order_status, "Không xác định")
+            city_name = get_province_name(city)
+
+            ward_name = get_ward_name(district, ward)
             response = (
-                f"Đơn hàng của bạn hiện đang ở trạng thái: {status_text}. "
-                f"Dự kiến giao hàng: {estimated_delivery}."
+                f"Trạng thái: {status_text}.\n"
+                f"Dự kiến giao hàng: {estimated_delivery}.\n"
+                f"Tên : {name_text}\n"
+                f"SDT : {phone_text}\n"
+                f"Địa chỉ: {apartment_number}, {ward_name}, *****, {city_name}\n"
+
+
             )
         else:
             response = f"Không tìm thấy thông tin cho mã đơn hàng {order_id}. Vui lòng kiểm tra lại mã đơn hàng của bạn."
 
         # Gửi phản hồi cho người dùng
         dispatcher.utter_message(text=response)
+        return [SlotSet("order_id", None)]
 
-        return []
 
 
+# GHN API Token
+GHN_TOKEN = '5ba2f299-3fee-11ef-8de7-a6386691fa55'
+
+# Helper functions to get city, district, and ward names from GHN API
+def get_province_name(province_id):
+    response = requests.get(
+        'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
+        headers={'token': GHN_TOKEN}
+    )
+    provinces = response.json().get('data', [])
+    # Convert both province_id and ProvinceID to string for comparison
+    for province in provinces:
+        if str(province['ProvinceID']) == str(province_id):  # Compare as strings
+            return province['ProvinceName']
+    return "Không xác định"
+
+
+def get_ward_name(district_id, ward_id):
+    response = requests.get(
+        'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward',
+        headers={'token': GHN_TOKEN},
+        params={'district_id': district_id}
+    )
+    wards = response.json().get('data', [])
+    for ward in wards:
+        if ward['WardCode'] == ward_id:
+            return ward['WardName']
+    return "Không xác định"

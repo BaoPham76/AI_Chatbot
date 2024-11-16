@@ -46,3 +46,22 @@ def get_order_details(order_id):
     connection.close()
 
     return result
+
+def get_brands():
+    """Truy vấn danh sách thương hiệu từ cơ sở dữ liệu"""
+    # Kết nối đến cơ sở dữ liệu
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    # Truy vấn danh sách thương hiệu
+    query = "SELECT name FROM brands WHERE deleted_at IS NULL"
+    cursor.execute(query)
+
+    # Lấy kết quả
+    results = cursor.fetchall()
+
+    # Đóng kết nối
+    cursor.close()
+    connection.close()
+
+    return [row[0] for row in results]

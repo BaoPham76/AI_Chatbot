@@ -1,6 +1,0 @@
-[
-  {
-    "name": "product_name",
-    "pattern": "(Casio\\ \\-\\ Nam\\ AE\\-1200WHD\\-1AVDF\\ Size\\ 45\\ X\\ 42\\.1\\ Mm|Casio\\ \\-\\ Nam\\ MTP\\-1374L\\-1AVDF|Tissot\\ \\-\\ Nam\\ T137\\.407\\.11\\.351\\.00|Seiko\\ \\-\\ Nam\\ SSC813P1|Citizen\\ \\-\\ Nam\\ NJ0153\\-82X|Casio\\ \\-\\ Unisex\\ F\\-94WA\\-9DG|Casio\\ \\-\\ Nữ\\ LA670WA\\-7DF|Đồng\\ Hồ\\ Tissot\\ \\-\\ Nữ\\ T050\\.207\\.37\\.017\\.04|Đồng\\ Hồ\\ Citizen\\ \\-\\ Nữ\\ EM0710\\-54Y)"
-  }
-]

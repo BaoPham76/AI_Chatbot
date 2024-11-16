@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 import requests
 
-from .database import get_product_details, get_order_details
+from .database import get_product_details, get_order_details, get_brands
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
@@ -92,53 +92,13 @@ class ActionSaveGender(Action):
         if gender:
             return [SlotSet('gender', gender)]
         return []
-# Hành động tìm kiếm thông tin sản phẩm
-# class ActionGetProductDetails(Action):
-#
-#     # Đặt tên cho hành động, sẽ được tham chiếu trong các tệp như `domain.yml` và `stories.yml`
-#     def name(self) -> Text:
-#         return "action_get_product_details"
-#
-#     # Thực thi hành động khi người dùng yêu cầu thông tin sản phẩm
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         # Lấy tên sản phẩm từ các thực thể trong câu người dùng nhập
-#         product_name = next(tracker.get_latest_entity_values("product_name"), None)
-#         print(f"Tên sản phẩm nhận được: {product_name}")
-#
-#         # Kiểm tra xem người dùng có cung cấp tên sản phẩm hay không
-#         if not product_name:
-#             dispatcher.utter_message(text="Xin lỗi, tôi không hiểu bạn đang hỏi về sản phẩm nào.")
-#             return []
-#
-#         # Gọi hàm từ file database.py để lấy thông tin chi tiết sản phẩm
-#         results = get_product_details(product_name)
-#
-#         # Xử lý kết quả truy vấn từ cơ sở dữ liệu
-#         if results:
-#             response = ""
-#             # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
-#             row = results[0]
-#             product_name, price_sell, img = row
-#             response += f"Sản phẩm: {product_name}\nGiá: {price_sell} VND\n![Ảnh sản phẩm](http://127.0.0.1:8000/asset/client/images/products/small/{img})\n"
-#
-#         else:
-#             # Nếu không tìm thấy sản phẩm, thông báo lỗi
-#             response = f"Không tìm thấy sản phẩm với tên '{product_name}'"
-#
-#         # Trả lời người dùng với thông tin đã tìm được hoặc thông báo lỗi
-#         dispatcher.utter_message(text=response)
-#
-#         return []
 
 
 class ActionSelectWatch(Action):
 
     # Đặt tên cho hành động, sẽ được tham chiếu trong các tệp như `domain.yml` và `stories.yml`
     def name(self) -> Text:
-        return "action_select_watch"
+        return "action_recommend_watch"
 
     # Thực thi hành động khi người dùng yêu cầu thông tin sản phẩm
     def run(self, dispatcher: CollectingDispatcher,
@@ -148,7 +108,7 @@ class ActionSelectWatch(Action):
         # Lấy thương hiệu và giới tính từ các thực thể trong câu người dùng nhập
         brand = tracker.get_slot("brand")
         gender = tracker.get_slot("gender")
-
+        print(brand + " " + gender)
         # Nếu chưa có `brand`, yêu cầu người dùng cung cấp
         if not brand:
             dispatcher.utter_message(
@@ -269,3 +229,24 @@ def get_ward_name(district_id, ward_id):
         if ward['WardCode'] == ward_id:
             return ward['WardName']
     return "Không xác định"
+
+
+class ActionShowWatchBrands(Action):
+
+    def name(self) -> str:
+        return "action_show_watch_brands"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain) -> list:
+        # Gọi phương thức get_brands từ database.py để lấy danh sách thương hiệu
+        brands = get_brands()
+
+        # Tạo các nút bấm cho mỗi thương hiệu
+        # buttons = [{"title": brand, "payload": f"/select_brand{{\"brand\": \"{brand}\"}}"} for brand in brands]
+        buttons = [{"title": brand, "payload": f'Quý khách đã chọn: {brand}'} for brand in brands]
+
+        # Gửi thông báo đến người dùng với danh sách các thương hiệu
+        dispatcher.utter_message(
+            text="Chọn một thương hiệu đồng hồ bạn muốn mua.",
+            buttons=buttons
+        )
+        return []

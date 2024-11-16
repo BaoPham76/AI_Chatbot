@@ -33,25 +33,16 @@ stories:
   - story: buy a watch no brand no gender
     steps:
       - intent: buy_watch
-      - action: utter_specify_brand
-      - intent: specify_brand
+      - action: action_show_watch_brands
+      - intent: select_brand
+        entities:
+          - brand: "Casio"
       - action: utter_specify_gender
       - intent: specify_gender
-      - action: action_select_watch
+        entities:
+          - gender: "Nam"
+      - action: action_recommend_watch
 
-  - story: buy a watch with gender first
-    steps:
-      - intent: specify_gender
-      - action: utter_specify_brand
-      - intent: specify_brand
-      - action: action_select_watch
-
-  - story: buy a watch with brand first
-    steps:
-      - intent: specify_brand
-      - action: utter_specify_gender
-      - intent: specify_gender
-      - action: action_select_watch
 
   - story: give name first
     steps:
@@ -83,3 +74,5 @@ stories:
       - active_loop: null
       - action: utter_submit
       - action: action_track_order
+
+

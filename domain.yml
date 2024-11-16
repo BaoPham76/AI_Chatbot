@@ -7,12 +7,13 @@ intents:
   - thank
   - ask_func_list
   - ask_name
-  - specify_brand
+  - select_brand
   - specify_gender
   - buy_watch
   - purchase_process
   - return_policy
   - track_order
+
 
 
 entities:
@@ -47,6 +48,7 @@ slots:
         entity: cust_name
   brand:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: brand
@@ -81,22 +83,16 @@ responses:
   utter_ask_name:
     - text: "{bot_position} họ Chat, tên Bot! Người ta hay gọi {bot_position} là Chat Bot thông minh xinh đẹp giỏi giang nhất vũ trụ ạ! Quý khách cần trợ giúp gì ạ?"
     - text: "Dạ thưa. Tên Tiếng Việt của {bot_position} là Trợ lý ảo nhưng {bot_position} thích gọi bằng tên Tiếng Anh là ChatBot cho nó Tây!"
-  utter_unclear:
-    - text: "Xin lỗi, em chưa hiểu rõ yêu cầu của quý khách. Quý khách có thể nói rõ hơn được không ạ?"
-    - text: "Dạ, em không chắc là em đã hiểu. Quý khách vui lòng giải thích thêm nhé!"
-  utter_specify_brand:
-    - text: "Quý khách muốn mua đồng hồ của hãng nào? Có thể là Casio, Citizen, Seiko hay hãng khác mà quý khách thích?"
-    - text: "Quý khách có thương hiệu đồng hồ nào trong tâm trí không? Như Casio, Citizen hay Seiko, chẳng hạn?"
   utter_specify_gender:
-    - text: "Quý khách muốn mua đồng hồ cho Nam, Nữ hay Unisex?"
+    - text: "Đã chọn {brand} . Quý khách muốn mua đồng hồ cho Nam, Nữ hay Unisex?"
   utter_purchase_process:
     - text: "Quy trình mua hàng rất đơn giản. Bạn chỉ cần chọn sản phẩm yêu thích, thêm vào giỏ hàng, sau đó tiến hành thanh toán. Nếu cần hỗ trợ thêm, tôi luôn sẵn sàng giúp bạn."
   utter_return_policy:
     - text: "Bạn có thể đổi trả hàng trong vòng 7 ngày kể từ khi nhận hàng nếu sản phẩm không đáp ứng mong đợi của bạn."
-  utter_ask_order_id:
-    - text: "Vui lòng cung cấp mã đơn hàng để tôi có thể kiểm tra."
   utter_submit:
     - text: "Loading đơn hàng {order_id} ...!"
+  utter_ask_order_id:
+    - text: "Vui lòng cung cấp mã đơn hàng để tôi có thể kiểm tra."
 
 
 
@@ -109,11 +105,11 @@ actions:
   - utter_thank
   - utter_ask_name
   - utter_specify_gender
-  - action_select_watch
-  - utter_specify_brand
+  - action_recommend_watch
   - action_save_cust_info
   - utter_purchase_process
   - utter_return_policy
-  - utter_ask_order_id
   - utter_submit
   - action_track_order
+  - action_show_watch_brands
+  - utter_ask_order_id

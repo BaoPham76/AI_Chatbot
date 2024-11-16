@@ -147,17 +147,14 @@ nlu:
       - em tên gì
 
 
-
-  - intent: specify_brand
+  - intent: select_brand
     examples: |
+      - Tôi muốn xem đồng hồ [Casio](brand)
+      - Cho tôi xem [Citizen](brand)
+      - Tôi chọn [Seiko](brand)
+      - Đồng hồ [Casio](brand) đi
+      - Tôi muốn mua [Seiko](brand)
       - [Casio](brand)
-      - [Casio](brand) đi
-      - Tôi muốn mua [Citizen](brand)
-      - Tôi thích [Seiko](brand)
-      - Có đồng hồ [Fossil](brand) nào không?
-      - Tôi đang tìm kiếm [Rolex](brand)
-      - Bạn có [Tissot](brand) không?
-      - [Omega](brand) là một thương hiệu tốt
 
   - intent: specify_gender
     examples: |

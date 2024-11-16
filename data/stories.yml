@@ -58,10 +58,12 @@ stories:
       - intent: give_name
       - action: action_save_cust_info
       - action: utter_greet_with_name
+
   - story: guide to the purchasing process
     steps:
     - intent: purchase_process
     - action: utter_purchase_process
+
   - story: support return
     steps:
       - intent: return_policy

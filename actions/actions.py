@@ -168,8 +168,14 @@ class ActionSelectWatch(Action):
             response = ""
             # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
             for row in results:
-                product_name, price_sell, img = row
-                response += f"Sản phẩm: {product_name}\nGiá: {price_sell} VND\n![Ảnh sản phẩm](http://127.0.0.1:8000/asset/client/images/products/small/{img})\n"
+                id, product_name, price_sell, img = row
+                product_link = f"http://127.0.0.1:8000/product-detail/{id}"
+                response += (
+                    f"Sản phẩm: {product_name}\n"
+                    f"Giá: {price_sell} VND\n"
+                    f"![Ảnh sản phẩm](http://127.0.0.1:8000/asset/client/images/products/small/{img})\n"
+                    f"Xem chi tiết tại: [Here!]({product_link})\n\n"
+                )
 
         else:
             # Nếu không tìm thấy sản phẩm, thông báo lỗi

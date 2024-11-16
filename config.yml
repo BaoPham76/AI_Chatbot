@@ -9,8 +9,6 @@ assistant_id: 20241010-200900-slow-bourbon
 language: en
 pipeline:
   - name: WhitespaceTokenizer
-  - name: "RegexFeaturizer"
-  - name: "LexicalSyntacticFeaturizer"
   - name: "CountVectorsFeaturizer"
   - name: "CountVectorsFeaturizer"
     analyzer: "char_wb"

@@ -1,32 +1,5 @@
 [
   {
-    "text": "Tôi cần đồng hồ cho Nam",
-    "entities": [
-      {
-        "start": 8,
-        "end": 15,
-        "value": "đồng hồ",
-        "entity": "product_type"
-      },
-      {
-        "start": 20,
-        "end": 23,
-        "value": "Nam",
-        "entity": "gender"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "gender",
-        "start": 20,
-        "end": 23,
-        "confidence_entity": 0.9994151592254639,
-        "value": "Nam",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
     "text": "Tôi muốn một đồng hồ Nữ",
     "entities": [
       {
@@ -44,10 +17,26 @@
     ],
     "predicted_entities": [
       {
+        "entity": "cust_sex",
+        "start": 0,
+        "end": 3,
+        "confidence_entity": 0.5332544445991516,
+        "value": "Tôi",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "product_type",
+        "start": 13,
+        "end": 20,
+        "confidence_entity": 0.8019735217094421,
+        "value": "đồng hồ",
+        "extractor": "DIETClassifier"
+      },
+      {
         "entity": "gender",
         "start": 21,
         "end": 23,
-        "confidence_entity": 0.9992294311523438,
+        "confidence_entity": 0.9993879795074463,
         "value": "Nữ",
         "extractor": "DIETClassifier"
       }

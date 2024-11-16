@@ -2,18 +2,6 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: greet user with name
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      Tên tôi là Minh
-    intent: give_name
-  - action: action_save_cust_info
-  - action: utter_greet_with_name
-
 - story: thank user
   steps:
   - user: |
@@ -24,7 +12,7 @@ stories:
 - story: goodbye
   steps:
   - user: |
-      tạm biệt
+      bye
     intent: bye
   - action: utter_bye
 
@@ -42,47 +30,48 @@ stories:
     intent: ask_name
   - action: utter_ask_name
 
+
+- story: request return policy
+  steps:
+  - user: |
+      bạn có chính sách đổi trả không
+    intent: return_policy
+  - action: utter_return_policy
+- story: request help with navigation
+  steps:
+  - user: |
+      tôi không biết làm thế nào để mua hàng
+    intent: purchase_process
+  - action: utter_purchase_process
+
+
+- story: greet user with name
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_name
+    entities:
+      - cust_name: "Bảo"
+  - action: action_save_cust_info
+  - action: utter_greet_with_name
+
 - story: buy a watch no brand no gender
   steps:
-  - user: |
-      Tôi muốn mua đồng hồ
-    intent: buy_watch
+  - intent: buy_watch
   - action: utter_specify_brand
-  - user: |
-      Tôi thích Casio
-    intent: specify_brand
+  - intent: specify_brand
+    entities:
+      - brand: "Casio"
   - action: utter_specify_gender
-  - user: |
-      tôi cần đồng hồ nam
-    intent: specify_gender
-  - action: action_select_watch
-
-- story: buy a watch with gender first
-  steps:
-  - user: |
-      tôi cần đồng hồ nữ
-    intent: specify_gender
-  - action: utter_specify_brand
-  - user: |
-      Tôi muốn mua Rolex
-    intent: specify_brand
-  - action: action_select_watch
-
-- story: buy a watch with brand first
-  steps:
-  - user: |
-      Tôi muốn mua đồng hồ Casio
-    intent: specify_brand
-  - action: utter_specify_gender
-  - user: |
-      đồng hồ unisex
-    intent: specify_gender
+  - intent: specify_gender
+    entities:
+      - gender: "nam"
   - action: action_select_watch
 
 - story: give name first
   steps:
-  - user: |
-      Tên tôi là Hằng
-    intent: give_name
+  - intent: give_name
+    entities:
+      - cust_name: "Hằng"
   - action: action_save_cust_info
   - action: utter_greet_with_name

@@ -1,4 +1,11 @@
 {
+  "ask_func_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 35,
+    "confused_with": {}
+  },
   "thank": {
     "precision": 1.0,
     "recall": 1.0,
@@ -6,18 +13,11 @@
     "support": 12,
     "confused_with": {}
   },
-  "ask_name": {
+  "give_name": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 27,
-    "confused_with": {}
-  },
-  "greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 13,
+    "support": 26,
     "confused_with": {}
   },
   "specify_gender": {
@@ -27,11 +27,32 @@
     "support": 30,
     "confused_with": {}
   },
-  "give_name": {
+  "track_order": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 26,
+    "support": 10,
+    "confused_with": {}
+  },
+  "return_policy": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 15,
+    "confused_with": {}
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 13,
+    "confused_with": {}
+  },
+  "purchase_process": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 15,
     "confused_with": {}
   },
   "bye": {
@@ -48,6 +69,13 @@
     "support": 8,
     "confused_with": {}
   },
+  "ask_name": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 27,
+    "confused_with": {}
+  },
   "specify_brand": {
     "precision": 1.0,
     "recall": 1.0,
@@ -55,30 +83,23 @@
     "support": 8,
     "confused_with": {}
   },
-  "ask_func_list": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 35,
-    "confused_with": {}
-  },
   "accuracy": 1.0,
   "macro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 205
   },
   "weighted avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 205
   },
   "micro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 205
   }
 }

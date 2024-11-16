@@ -16,7 +16,7 @@ def get_product_details(brand, gender):
     cursor = connection.cursor()
 
     # Truy vấn tìm sản phẩm dựa trên tên
-    query = "SELECT name, price_sell, img FROM products WHERE name LIKE %s"
+    query = "SELECT id, name, price_sell, img FROM products WHERE name LIKE %s"
     cursor.execute(query, (f"{brand} - {gender}%",))
 
     # Đọc kết quả

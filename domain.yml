@@ -96,7 +96,7 @@ responses:
   utter_ask_order_id:
     - text: "Vui lòng cung cấp mã đơn hàng để tôi có thể kiểm tra."
   utter_submit:
-    - text: "Ok. Thanks!"
+    - text: "Loading đơn hàng {order_id} ...!"
 
 
 

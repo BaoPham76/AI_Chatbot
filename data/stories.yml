@@ -8,7 +8,6 @@ stories:
       - action: utter_greet
       - intent: give_name
       - action: action_save_cust_info
-      - action: utter_greet_with_name
 
   - story: thank user
     steps:
@@ -43,12 +42,33 @@ stories:
           - gender: "Nam"
       - action: action_recommend_watch
 
+  - story: buy a watch give gender
+    steps:
+      - intent: specify_gender
+        entities:
+          - gender: "Nam"
+      - action: action_show_watch_brands
+      - intent: select_brand
+        entities:
+          - brand: "Casio"
+      - action: action_recommend_watch
+
+
+  - story: buy a watch give brand
+    steps:
+      - intent: select_brand
+        entities:
+          - brand: "Casio"
+      - action: utter_specify_gender
+      - intent: specify_gender
+        entities:
+          - gender: "Nam"
+      - action: action_recommend_watch
 
   - story: give name first
     steps:
       - intent: give_name
       - action: action_save_cust_info
-      - action: utter_greet_with_name
 
   - story: guide to the purchasing process
     steps:

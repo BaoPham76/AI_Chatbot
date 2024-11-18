@@ -13,6 +13,7 @@ intents:
   - purchase_process
   - return_policy
   - track_order
+  - out_of_scope
 
 
 
@@ -68,8 +69,6 @@ slots:
 responses:
   utter_greet:
     - text: "Kính chào Quý khách! Quý khách vui lòng cho biết tên để tiện xưng hô được không ah?"
-  utter_greet_with_name:
-    - text: "Kính chào {cust_sex}{cust_name}. WatchStyle có thể giúp gì được {cust_sex}{cust_name} ạ?"
   utter_bye:
     - text: "Kính chào tạm biệt và mong sớm gặp lại quý khách!"
     - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành!"
@@ -86,21 +85,31 @@ responses:
   utter_specify_gender:
     - text: "Đã chọn {brand} . Quý khách muốn mua đồng hồ cho Nam, Nữ hay Unisex?"
   utter_purchase_process:
-    - text: "Quy trình mua hàng rất đơn giản. Bạn chỉ cần chọn sản phẩm yêu thích, thêm vào giỏ hàng, sau đó tiến hành thanh toán. Nếu cần hỗ trợ thêm, tôi luôn sẵn sàng giúp bạn."
+    - text:
+        "Quy trình mua hàng rất đơn giản. Quý khách chỉ cần chọn sản phẩm yêu thích, thêm vào giỏ hàng, sau đó tiến hành thanh toán. Nếu quý khách chưa rõ, hãy tham khảo các bước cụ thể sau đây:\n\n
+        1. Chọn sản phẩm yêu thích\n
+        2. Thêm sản phẩm vào giỏ hàng\n
+        3. Tiến hành thanh toán\n
+        4. Xác nhận đơn hàng\n
+        5. Nhận hàng và trải nghiệm"
   utter_return_policy:
-    - text: "Bạn có thể đổi trả hàng trong vòng 7 ngày kể từ khi nhận hàng nếu sản phẩm không đáp ứng mong đợi của bạn."
-  utter_submit:
-    - text: "Loading đơn hàng {order_id} ...!"
-  utter_ask_order_id:
-    - text: "Vui lòng cung cấp mã đơn hàng để tôi có thể kiểm tra."
+    - text:
+        "Quý khách có quyền yêu cầu đổi hoặc trả hàng trong vòng 7 ngày kể từ ngày nhận được sản phẩm nếu sản phẩm không đáp ứng mong đợi hoặc có vấn đề về chất lượng. Để đảm bảo quyền lợi của quý khách, vui lòng tham khảo các bước dưới đây:\n\n
+        1. Tạo yêu cầu đổi trả bằng cách liên hệ hotline 1900.9789\n
+        2. Đóng gói và gửi lại sản phẩm\n
+        3. Hoàn tiền hoặc đổi sản phẩm"
 
+  utter_submit:
+    - text: "Loading đơn hàng {order_id}...!"
+  utter_ask_order_id:
+    - text: "Vui lòng cung cấp mã đơn hàng để {bot_position} có thể kiểm tra."
+  utter_unclear:
+    - text: "2, 3 con cua\n Quý khách vừa nhắn nhưng không ăn thua. Quý khách hãy thử đưa ra lại câu hỏi khác nhé!\n Chào thân ái ôm quý khách 1 cái ❤️ ![Ảnh con cua](https://dayve.vn/wp-content/uploads/2021/09/Buoc-11_-Nho-to-mau-cho-chu-cua-them-dep-nhe.png)"
 
 
 actions:
   - utter_greet
-  - utter_greet_with_name
   - utter_bye
-  - utter_unclear
   - utter_func_list
   - utter_thank
   - utter_ask_name
@@ -113,3 +122,4 @@ actions:
   - action_track_order
   - action_show_watch_brands
   - utter_ask_order_id
+  - utter_unclear

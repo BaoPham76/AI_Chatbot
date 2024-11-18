@@ -28,7 +28,8 @@ nlu:
       - [Chị](cust_sex) [Hằng](cust_name)
       - [Chị](cust_sex) [Hằng Nga](cust_name)
       - [Vũ](cust_name)
-      - [Xuân Vũ]((cust_name]
+      - [Xuân Vũ](cust_name)
+      - tên [Bảo](cust_name)
       
       
       
@@ -249,5 +250,30 @@ nlu:
       - Kiểm tra đơn hàng
       - Tôi muốn kiểm tra tình trạng đơn hàng
 
+
+  - intent: out_of_scope
+    examples: |
+      - Ai là tổng thống Mỹ
+      - Thời tiết hôm nay thế nào
+      - Bạn biết chơi bóng đá không
+      - Đường đến nhà ga gần nhất ở đâu
+      - Bạn thích ăn món gì
+      - Bạn có biết chơi cờ vua không
+      - Ai là ca sĩ nổi tiếng nhất hiện nay
+      - Hôm nay có trận bóng đá nào không
+      - Tại sao bầu trời lại có màu xanh
+      - Bạn có thích xem phim không
+      - Chó hay mèo thông minh hơn
+      - Làm thế nào để nấu một bát phở ngon
+      - Bạn nghĩ gì về trí tuệ nhân tạo
+      - Tôi nên đi du lịch ở đâu vào mùa hè này
+      - Bạn biết ai phát minh ra điện thoại không
+      - Làm thế nào để trở thành người giàu có
+      - Có cách nào học tiếng Anh nhanh không
+      - Bạn đã từng đi đến Việt Nam chưa
+      - Vé số hôm nay ra con gì
+      - Đói quá
+      - Chán quá
+      - Solo tay đôi hông
 
       

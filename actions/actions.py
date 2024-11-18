@@ -34,7 +34,7 @@ class action_save_cust_info(Action):
 
         # Extract customer name and sex from entities
         cust_name = next(tracker.get_latest_entity_values("cust_name"), None)
-        cust_sex = next(tracker.get_latest_entity_values("cust_sex"), None)
+        cust_sex = tracker.get_slot("cust_sex")
 
         bot_position = "Em"
         if cust_sex is None:
@@ -49,10 +49,11 @@ class action_save_cust_info(Action):
             bot_position = "Em"
 
         if not cust_name:
-            dispatcher.utter_message(text="Xin vui lòng cho tôi biết tên của quý khách.")
-            return []
+            dispatcher.utter_message(text=f"Xin vui lòng cho {bot_position} biết tên của {cust_sex} ạ.")
+            return [SlotSet('cust_sex', name_cap(cust_sex))]
 
-        print(cust_sex + " " + cust_name + ", " + bot_position)
+        response = f"Kính chào {cust_sex} {cust_name}. WatchStyle có thể giúp gì được {cust_sex} {cust_name} ạ?"
+        dispatcher.utter_message(text=response)
         # Set slots with extracted and formatted values
         return [
             SlotSet('cust_name', f" {name_cap(cust_name)}"),
@@ -108,7 +109,6 @@ class ActionSelectWatch(Action):
         # Lấy thương hiệu và giới tính từ các thực thể trong câu người dùng nhập
         brand = tracker.get_slot("brand")
         gender = tracker.get_slot("gender")
-        print(brand + " " + gender)
         # Nếu chưa có `brand`, yêu cầu người dùng cung cấp
         if not brand:
             dispatcher.utter_message(
@@ -241,8 +241,7 @@ class ActionShowWatchBrands(Action):
         brands = get_brands()
 
         # Tạo các nút bấm cho mỗi thương hiệu
-        # buttons = [{"title": brand, "payload": f"/select_brand{{\"brand\": \"{brand}\"}}"} for brand in brands]
-        buttons = [{"title": brand, "payload": f'Quý khách đã chọn: {brand}'} for brand in brands]
+        buttons = [{"title": brand, "payload": f"/select_brand{{\"brand\": \"{brand}\"}}"} for brand in brands]
 
         # Gửi thông báo đến người dùng với danh sách các thương hiệu
         dispatcher.utter_message(

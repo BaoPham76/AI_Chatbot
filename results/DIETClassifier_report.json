@@ -1,56 +1,49 @@
 {
-  "cust_sex": {
-    "precision": 0.9655172413793104,
+  "brand": {
+    "precision": 1.0,
     "recall": 1.0,
-    "f1-score": 0.9824561403508771,
+    "f1-score": 1.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "cust_sex": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
     "support": 28,
     "confused_with": {}
   },
   "gender": {
-    "precision": 1.0,
+    "precision": 0.9444444444444444,
     "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 30,
+    "f1-score": 0.9714285714285714,
+    "support": 17,
     "confused_with": {}
   },
   "cust_name": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 29,
-    "confused_with": {}
-  },
-  "brand": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 8,
-    "confused_with": {}
-  },
-  "product_type": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4,
+    "support": 32,
     "confused_with": {}
   },
   "micro avg": {
-    "precision": 0.99,
+    "precision": 0.9880952380952381,
     "recall": 1.0,
-    "f1-score": 0.9949748743718593,
-    "support": 99
+    "f1-score": 0.9940119760479043,
+    "support": 83
   },
   "macro avg": {
-    "precision": 0.993103448275862,
+    "precision": 0.9861111111111112,
     "recall": 1.0,
-    "f1-score": 0.9964912280701753,
-    "support": 99
+    "f1-score": 0.9928571428571429,
+    "support": 83
   },
   "weighted avg": {
-    "precision": 0.9902473005921283,
+    "precision": 0.9886211512717537,
     "recall": 1.0,
-    "f1-score": 0.9950381003012582,
-    "support": 99
+    "f1-score": 0.9941480206540446,
+    "support": 83
   },
-  "accuracy": 0.9990196078431373
+  "accuracy": 0.999163179916318
 }

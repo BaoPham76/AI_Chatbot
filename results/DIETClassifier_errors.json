@@ -1,43 +1,14 @@
 [
   {
-    "text": "Tôi muốn một đồng hồ Nữ",
-    "entities": [
-      {
-        "start": 13,
-        "end": 20,
-        "value": "đồng hồ",
-        "entity": "product_type"
-      },
-      {
-        "start": 21,
-        "end": 23,
-        "value": "Nữ",
-        "entity": "gender"
-      }
-    ],
+    "text": "Bạn đã từng đi đến Việt Nam chưa",
+    "entities": [],
     "predicted_entities": [
       {
-        "entity": "cust_sex",
-        "start": 0,
-        "end": 3,
-        "confidence_entity": 0.5332544445991516,
-        "value": "Tôi",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "product_type",
-        "start": 13,
-        "end": 20,
-        "confidence_entity": 0.8019735217094421,
-        "value": "đồng hồ",
-        "extractor": "DIETClassifier"
-      },
-      {
         "entity": "gender",
-        "start": 21,
-        "end": 23,
-        "confidence_entity": 0.9993879795074463,
-        "value": "Nữ",
+        "start": 24,
+        "end": 27,
+        "confidence_entity": 0.6076522469520569,
+        "value": "Nam",
         "extractor": "DIETClassifier"
       }
     ]

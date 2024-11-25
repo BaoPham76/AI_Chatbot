@@ -16,6 +16,7 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 100
+    num_transformer_layers: 2
 # Configuration for Rasa Core.
 policies:
   - name: MemoizationPolicy

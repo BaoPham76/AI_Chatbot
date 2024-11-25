@@ -65,3 +65,52 @@ def get_brands():
     connection.close()
 
     return [row[0] for row in results]
+
+def get_watches_by_rating(min_rating):
+    """
+    Lấy danh sách các sản phẩm có tổng số lượng đánh giá từ một mức sao trở lên.
+    :param min_rating: Số sao tối thiểu (ví dụ: 4 sao)
+    :return: Danh sách các sản phẩm và tổng đánh giá
+    """
+    # Kết nối đến cơ sở dữ liệu
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    # Truy vấn để lấy danh sách sản phẩm
+    query = """
+        SELECT 
+            products.id, 
+            products.name, 
+            products.price_sell, 
+            products.img,
+            COUNT(*) AS total_reviews, 
+            AVG(product_reviews.rating) AS average_rating
+        FROM 
+            products
+        JOIN 
+            product_reviews 
+        ON 
+            products.id = product_reviews.product_id
+        WHERE 
+            product_reviews.rating >= %s
+        AND 
+            product_reviews.deleted_at IS NULL
+        GROUP BY 
+            products.id, 
+            products.name, 
+            products.price_sell
+        HAVING 
+            total_reviews > 0
+        ORDER BY 
+            average_rating DESC
+    """
+    cursor.execute(query, (min_rating,))
+
+    # Đọc kết quả
+    results = cursor.fetchall()
+
+    # Đóng kết nối
+    cursor.close()
+    connection.close()
+
+    return results

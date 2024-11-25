@@ -29,7 +29,7 @@ rules:
   - action: utter_submit
   - action: action_track_order
 
-- rule: Handle out-of-scope queries with ChatGPT
+- rule: Handle out-of-scope queries
   steps:
     - intent: out_of_scope
     - action: utter_unclear

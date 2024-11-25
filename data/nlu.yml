@@ -18,6 +18,7 @@ nlu:
       - [Mình](cust_sex) tên là [Khang](cust_name)
       - [Gọi tôi](cust_sex) là [Thành](cust_name)
       - [Tôi](cust_sex) là [Minh](cust_name)
+      - [Tôi](cust_sex) là [Huy](cust_name) đây
       - [Anh](cust_sex) là [Hải](cust_name)
       - [Chú](cust_sex) [Tuấn](cust_name)
       - [Chú](cust_sex) [Gia Tuấn](cust_name)
@@ -25,6 +26,7 @@ nlu:
       - [Cô](cust_sex) [Xuân Mai](cust_name)
       - [Anh](cust_sex) [Bảo](cust_name)
       - [Anh](cust_sex) [Bảo Phạm](cust_name)
+      - [Anh](cust_sex) [Bảo](cust_name) đây
       - [Chị](cust_sex) [Hằng](cust_name)
       - [Chị](cust_sex) [Hằng Nga](cust_name)
       - [Vũ](cust_name)
@@ -49,9 +51,7 @@ nlu:
       - anh ơi
       - chị ơi
       - cháu ơi
-      - hello 
       - chào 
-      - hi 
       - có ai ở đây không?
 
   - intent: bye
@@ -162,33 +162,21 @@ nlu:
       - [Nam](gender)
       - [Nữ](gender)
       - [Unisex](gender)
-      - Tôi cần [đồng hồ](product_type) cho [Nam](gender)
-      - Tôi muốn một [đồng hồ](product_type) [Nữ](gender)
+      - Tôi cần đồng hồ cho [Nam](gender)
+      - Tôi muốn một đồng hồ [Nữ](gender)
       - Có đồng hồ [Unisex](gender) nào không?
       - Bạn có mẫu [Nam](gender) nào đẹp không?
-      - [nam](gender)
-      - [nữ](gender)
-      - [unisex](gender)
       - Đồng hồ [Nam](gender)
       - Đồng hồ [Nữ](gender)
-      - Đồng hồ [Unisex](gender)
-      - đồng hồ [nam](gender)
-      - đồng hồ [nữ](gender)
-      - đồng hồ [unisex](gender)
       - Mua đồng hồ [Nam](gender)
       - Mua đồng hồ [Nữ](gender)
-      - Mua đồng hồ [nam](gender)
-      - Mua đồng hồ [nữ](gender)
-      - Tôi muốn mua đồng hồ [nam](gender)
-      - Tôi muốn mua đồng hồ [nữ](gender)
-      - Tôi cần mua đồng hồ [nam](gender)
-      - Tôi cần mua đồng hồ [nữ](gender)
-      - Tôi muốn tìm đồng hồ [nam](gender)
-      - Tôi muốn tìm đồng hồ [nữ](gender)
-      - Tôi đang tìm một chiếc đồng hồ [nam](gender)
-      - Tôi đang tìm một chiếc đồng hồ [nữ](gender)
-      - Giúp tôi với, tôi cần mua đồng hồ [nam](gender) tốt
-      - Giúp tôi với, tôi cần mua đồng hồ [nữ](gender) tốt?
+      - Tôi muốn mua đồng hồ [Nam](gender)
+      - Tôi muốn mua đồng hồ [Nữ](gender)
+      - Tôi đang tìm một chiếc đồng hồ [Nam](gender)
+      - Tôi đang tìm một chiếc đồng hồ [Nữ](gender)
+      - Giúp tôi với, tôi cần mua đồng hồ [Nam](gender) tốt
+      - Giúp tôi với, tôi cần mua đồng hồ [Nữ](gender) tốt
+    
 
   - intent: buy_watch
     examples: |
@@ -275,5 +263,44 @@ nlu:
       - Đói quá
       - Chán quá
       - Solo tay đôi hông
+  - intent: ask_warranty
+    examples: |
+      - Chế độ bảo hành đồng hồ ra sao?
+      - Đồng hồ có được bảo hành không?
+      - Chính sách bảo hành cho đồng hồ là gì?
+      - Bảo hành đồng hồ trong bao lâu?
+      - Đồng hồ được bảo hành như thế nào?
+      - Nếu đồng hồ bị hỏng thì bảo hành ở đâu?
+      - Tôi muốn biết thông tin về bảo hành đồng hồ
+      - Điều kiện để bảo hành đồng hồ là gì?
+      - Bảo hành đồng hồ
+      - Bảo hành đồng hồ ở đâu
+    
 
+  - intent: ask_for_watch_by_rating
+    examples: |
+      - Tôi muốn xem đồng hồ [5](rating) sao
+      - Hiển thị những đồng hồ được [4](rating) sao
+      - Đồng hồ [5](rating) sao
+      - Những đồng hồ [3](rating) sao
+      - Đồng hồ được đánh giá [4](rating) sao
+      - Các đồng hồ [4](rating) sao
+      - Đồng hồ nào [5](rating) sao
+      - [4](rating) sao đồng hồ
+      - Đồng hồ [5](rating) sao đánh giá
+      - [5](rating) sao
+      - [4](rating) sao
+      - Đồng hồ nào có đánh giá [năm](rating) sao
+      - Tôi muốn xem đồng hồ [ba](rating) sao
+      - Hiển thị những đồng hồ được [hai](rating) sao
+      - Đồng hồ [bốn](rating) sao
+      - Những đồng hồ [ba](rating) sao
+      - Đồng hồ được đánh giá [bốn](rating) sao
+      - Các đồng hồ [bốn](rating) sao
+      - Đồng hồ nào [năm](rating) sao
+      - [sáu](rating) sao đồng hồ
+      - Đồng hồ [ba](rating) sao đánh giá
+      - [hai](rating) sao
+      - [một](rating) sao
+      - Đồng hồ nào có đánh giá [năm](rating) sao
       

@@ -1,54 +1,26 @@
 {
-  "ask_func_list": {
+  "select_brand": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 35,
-    "confused_with": {}
-  },
-  "thank": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 12,
-    "confused_with": {}
-  },
-  "give_name": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 26,
+    "support": 6,
     "confused_with": {}
   },
   "specify_gender": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 30,
+    "support": 17,
     "confused_with": {}
   },
-  "track_order": {
+  "buy_watch": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 10,
+    "support": 8,
     "confused_with": {}
   },
   "return_policy": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 15,
-    "confused_with": {}
-  },
-  "greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 13,
-    "confused_with": {}
-  },
-  "purchase_process": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -62,11 +34,18 @@
     "support": 6,
     "confused_with": {}
   },
-  "buy_watch": {
+  "ask_warranty": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 8,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_func_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 35,
     "confused_with": {}
   },
   "ask_name": {
@@ -76,11 +55,46 @@
     "support": 27,
     "confused_with": {}
   },
-  "specify_brand": {
+  "greet": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 8,
+    "support": 13,
+    "confused_with": {}
+  },
+  "thank": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12,
+    "confused_with": {}
+  },
+  "give_name": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 27,
+    "confused_with": {}
+  },
+  "purchase_process": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 15,
+    "confused_with": {}
+  },
+  "track_order": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "out_of_scope": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 22,
     "confused_with": {}
   },
   "accuracy": 1.0,
@@ -88,18 +102,18 @@
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 205
+    "support": 223
   },
   "weighted avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 205
+    "support": 223
   },
   "micro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 205
+    "support": 223
   }
 }

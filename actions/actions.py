@@ -3,11 +3,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+
 from datetime import datetime, timedelta
+from unidecode import unidecode
 
 import requests
 
-from .database import get_product_details, get_order_details, get_brands
+from .database import get_product_details, get_order_details, get_brands, get_watches_by_rating
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
@@ -173,7 +175,7 @@ class ActionTrackOrder(Action):
             estimated_delivery_dt = created_at_dt + timedelta(days=7)
             estimated_delivery = estimated_delivery_dt.strftime("%d/%m/%Y")
             name_text = name[0] + '*' * (len(name) - 2) + name[-1] if len(name) > 2 else name
-            phone_text = phone_number[:3] + '*' * (len(phone_number) - 5) + phone_number[-2:]
+            phone_text = phone_number[:3] + '*' * (len(phone_number) - 2) + phone_number[-2:]
             status_text = {
                 0: "Chờ xử lý",
                 1: "Đang giao hàng",
@@ -188,7 +190,8 @@ class ActionTrackOrder(Action):
                 f"Dự kiến giao hàng: {estimated_delivery}.\n"
                 f"Tên : {name_text}\n"
                 f"SDT : {phone_text}\n"
-                f"Địa chỉ: {apartment_number}, {ward_name}, *****, {city_name}\n"
+                #bỏ ward name để che dấu huyện, nếu cần thì thêm vào
+                f"Địa chỉ: {apartment_number}, *****, *****, {city_name}\n"
 
 
             )
@@ -241,11 +244,71 @@ class ActionShowWatchBrands(Action):
         brands = get_brands()
 
         # Tạo các nút bấm cho mỗi thương hiệu
-        buttons = [{"title": brand, "payload": f"/select_brand{{\"brand\": \"{brand}\"}}"} for brand in brands]
+        buttons = [{"title": brand, "payload": f'Tôi chọn {brand}'} for brand in brands]
 
         # Gửi thông báo đến người dùng với danh sách các thương hiệu
         dispatcher.utter_message(
             text="Chọn một thương hiệu đồng hồ bạn muốn mua.",
             buttons=buttons
         )
+        return []
+
+
+class ActionShowWatchesByRating(Action):
+    def name(self) -> Text:
+        return "action_show_watches_by_rating"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Lấy giá trị rating từ user input
+        rating = next(tracker.get_latest_entity_values("rating"), None)
+        if rating:
+            try:
+                # Loại bỏ dấu và chuẩn hóa input
+                normalized_rating = unidecode(rating.lower())
+
+                # Từ điển chuyển chữ thành số
+                word_to_number = {
+                    "mot": 1, "hai": 2, "ba": 3, "bon": 4, "nam": 5,
+                    "sau": 6, "bay": 7, "tam": 8, "chin": 9, "muoi": 10
+                }
+
+                # Nếu rating là số, chuyển đổi trực tiếp; nếu là chữ, chuyển từ chữ sang số
+                if normalized_rating.isdigit():
+                    min_rating = int(normalized_rating)
+                else:
+                    min_rating = word_to_number.get(normalized_rating)
+
+                if min_rating is None:
+                    raise ValueError("Invalid rating")
+
+                # Gọi hàm từ file database.py để lấy danh sách đồng hồ theo rating
+                results = get_watches_by_rating(min_rating)
+
+                if results:
+                    response = ""
+                    # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
+                    for row in results:
+                        product_id, product_name, price_sell, img, total_reviews, average_rating = row
+                        product_link = f"http://127.0.0.1:8000/product-detail/{product_id}"
+                        response += (
+                            f"Sản phẩm: {product_name}\n"
+                            f"Giá: {price_sell} VND\n"
+                            f"Đánh giá trung bình: {average_rating:.1f} sao\n"
+                            f"Tổng số đánh giá: {total_reviews}\n"
+                            f"![Ảnh sản phẩm](http://127.0.0.1:8000/asset/client/images/products/small/{img})\n"
+                            f"Xem chi tiết tại: [Here!]({product_link})\n\n"
+                        )
+                else:
+                    # Không tìm thấy sản phẩm với mức đánh giá mong muốn
+                    response = f"Không tìm thấy đồng hồ nào được đánh giá từ {min_rating} sao trở lên."
+            except ValueError:
+                response = "Vui lòng nhập số sao hợp lệ (ví dụ: 4 sao, 5 sao)."
+        else:
+            response = "Bạn muốn tìm đồng hồ được đánh giá mấy sao?"
+
+        # Trả lời người dùng với thông tin đã tìm được hoặc thông báo lỗi
+        dispatcher.utter_message(text=response)
         return []

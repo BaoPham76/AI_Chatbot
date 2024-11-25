@@ -14,6 +14,8 @@ intents:
   - return_policy
   - track_order
   - out_of_scope
+  - ask_warranty
+  - ask_for_watch_by_rating
 
 
 
@@ -22,6 +24,7 @@ entities:
   - cust_name
   - brand
   - gender
+  - rating
 
 forms:
   order_form:
@@ -58,6 +61,11 @@ slots:
     mappings:
       - type: from_entity
         entity: gender
+  rating:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: rating
   bot_position:
     type: text
     influence_conversation: false
@@ -73,10 +81,9 @@ responses:
     - text: "Kính chào tạm biệt và mong sớm gặp lại quý khách!"
     - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành!"
   utter_thank:
-    - text: "Cảm ơn quý khách quá khen ah!"
     - text: "Dạ không có gì, đó là trách nhiệm của {bot_position} mà!"
   utter_func_list:
-    - text: "{bot_position} có thể làm được rất nhiều thứ: hát, đọc thơ, đọc chuyện... nhưng giờ {bot_position} chỉ chat thôi!"
+    - text: "{bot_position} có thể làm được rất nhiều thứ: hát, đọc thơ,  kể chuyện... nhưng giờ {bot_position} chỉ chat thôi!"
     - text: "{bot_position} có khả năng hỗ trợ nhiều dịch vụ khác nhau, Quý khách muốn hỏi về điều gì ạ?"
     - text: "{bot_position} có thể giúp Quý khách tìm kiếm thông tin sản phẩm, hỗ trợ đặt hàng, và nhiều điều khác nữa!"
   utter_ask_name:
@@ -98,6 +105,8 @@ responses:
         1. Tạo yêu cầu đổi trả bằng cách liên hệ hotline 1900.9789\n
         2. Đóng gói và gửi lại sản phẩm\n
         3. Hoàn tiền hoặc đổi sản phẩm"
+  utter_ask_for_rating:
+    - text: "Bạn muốn tìm đồng hồ được đánh giá mấy sao?"
 
   utter_submit:
     - text: "Loading đơn hàng {order_id}...!"
@@ -105,7 +114,8 @@ responses:
     - text: "Vui lòng cung cấp mã đơn hàng để {bot_position} có thể kiểm tra."
   utter_unclear:
     - text: "2, 3 con cua\n Quý khách vừa nhắn nhưng không ăn thua. Quý khách hãy thử đưa ra lại câu hỏi khác nhé!\n Chào thân ái ôm quý khách 1 cái ❤️ ![Ảnh con cua](https://dayve.vn/wp-content/uploads/2021/09/Buoc-11_-Nho-to-mau-cho-chu-cua-them-dep-nhe.png)"
-
+  utter_ask_warranty:
+    - text: "Ngoài chế độ bảo hành quốc tế theo hãng quy định, chúng tôi có chế độ bảo hành máy lên đến 10 năm cho tất cả các dòng đồng hồ. Vui lòng giữ hóa đơn mua hàng để được bảo hành.\n Chế độ bảo hành được áp dụng trên toàn hệ thống"
 
 actions:
   - utter_greet
@@ -123,3 +133,6 @@ actions:
   - action_show_watch_brands
   - utter_ask_order_id
   - utter_unclear
+  - utter_ask_warranty
+  - action_show_watches_by_rating
+  - utter_ask_for_rating

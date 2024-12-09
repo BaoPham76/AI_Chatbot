@@ -1,16 +1,70 @@
 [
   {
-    "text": "Bạn đã từng đi đến Việt Nam chưa",
+    "text": "Tôi chọn thương hiệu Casio",
+    "entities": [
+      {
+        "start": 21,
+        "end": 26,
+        "value": "Casio",
+        "entity": "brand"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Rolex có mẫu nào không?",
+    "entities": [
+      {
+        "start": 0,
+        "end": 5,
+        "value": "Rolex",
+        "entity": "brand"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tôi muốn mua một chiếc đồng hồ nam.",
     "entities": [],
     "predicted_entities": [
       {
         "entity": "gender",
-        "start": 24,
-        "end": 27,
-        "confidence_entity": 0.6076522469520569,
-        "value": "Nam",
+        "start": 31,
+        "end": 34,
+        "confidence_entity": 0.9977869987487793,
+        "value": "nam",
         "extractor": "DIETClassifier"
       }
     ]
+  },
+  {
+    "text": "Tôi muốn mua đồng hồ 4 sao trở lên.",
+    "entities": [
+      {
+        "start": 21,
+        "end": 22,
+        "value": "4",
+        "entity": "rating"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tôi tên là Hùng.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 3,
+        "value": "Tôi",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 11,
+        "end": 15,
+        "value": "Hùng",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": []
   }
 ]

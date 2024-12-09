@@ -16,6 +16,8 @@ intents:
   - out_of_scope
   - ask_warranty
   - ask_for_watch_by_rating
+  - return_policy+ask_warranty
+  - thank+bye
 
 
 
@@ -25,11 +27,6 @@ entities:
   - brand
   - gender
   - rating
-
-forms:
-  order_form:
-    required_slots:
-      - order_id
 
 slots:
   order_id:
@@ -52,7 +49,6 @@ slots:
         entity: cust_name
   brand:
     type: text
-    influence_conversation: true
     mappings:
       - type: from_entity
         entity: brand
@@ -72,7 +68,10 @@ slots:
     mappings:
       - type: custom
     initial_value: "Em"
-
+forms:
+  order_form:
+    required_slots:
+      - order_id
 
 responses:
   utter_greet:

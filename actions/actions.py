@@ -131,10 +131,11 @@ class ActionSelectWatch(Action):
             # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
             for row in results:
                 id, product_name, price_sell, img = row
+                formatted_price = f"{price_sell:,.0f}".replace(",", ".") + " VNĐ"
                 product_link = f"http://127.0.0.1:8000/product-detail/{id}"
                 response += (
                     f"Sản phẩm: {product_name}\n"
-                    f"Giá: {price_sell} VND\n"
+                    f"Giá: {formatted_price}\n"
                     f"![Ảnh sản phẩm](http://127.0.0.1:8000/asset/client/images/products/small/{img})\n"
                     f"Xem chi tiết tại: [Here!]({product_link})\n\n"
                 )

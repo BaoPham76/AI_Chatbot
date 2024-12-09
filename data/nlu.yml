@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-  - intent: give_name
+  - intent: give_name #đưa tên
     examples: |
       - [Tên tôi](cust_sex) là [Minh](cust_name)
       - [Anh](cust_sex) tên [Đức](cust_name)
@@ -32,13 +32,14 @@ nlu:
       - [Vũ](cust_name)
       - [Xuân Vũ](cust_name)
       - tên [Bảo](cust_name)
+      - tên [Tuấn KKhang](cust_name)
       
       
       
       
       
 
-  - intent: greet
+  - intent: greet #chào hỏi
     examples: |
       - xin chào
       - chào bạn
@@ -53,8 +54,10 @@ nlu:
       - cháu ơi
       - chào 
       - có ai ở đây không?
+      - chào buổi sáng
+      - hello shop
 
-  - intent: bye
+  - intent: bye #tạm biệt
     examples: |
       - tạm biệt
       - chào tạm biệt
@@ -62,8 +65,10 @@ nlu:
       - tạm biệt em
       - tạm biệt em nhé
       - bye
+      - bye bye
+      - bye nha
 
-  - intent: thank
+  - intent: thank #cảm ơn
     examples: |
       - chuẩn
       - hay
@@ -78,7 +83,7 @@ nlu:
       - cảm ơn
       - giỏi
 
-  - intent: ask_func_list
+  - intent: ask_func_list #hỏi chức năng
     examples: |
       - bạn có thể làm được những gì
       - bạn giúp được gì nào
@@ -110,14 +115,8 @@ nlu:
       - làm được gì 
       - có làm được gì 
       - có làm được trò gì 
-      - giúp giúp cái gì
-      - biết gì mà nói
-      - làm được gì
-      - giúp được gì
-      - mày làm được gì
-      - có biết gì 
 
-  - intent: ask_name
+  - intent: ask_name #hỏi tên chatbot
     examples: |
       - bạn tên gì
       - tên gì
@@ -144,11 +143,9 @@ nlu:
       - tên em 
       - tên bạn 
       - bạn tên là gì 
-      - bạn tên gì thế
-      - em tên gì
 
 
-  - intent: select_brand
+  - intent: select_brand #Chọn thương hiệu
     examples: |
       - Tôi muốn xem đồng hồ [Casio](brand)
       - Cho tôi xem [Citizen](brand)
@@ -156,8 +153,12 @@ nlu:
       - Đồng hồ [Casio](brand) đi
       - Tôi muốn mua [Seiko](brand)
       - [Casio](brand)
+      - Tôi chọn [Tissot](brand)
+      - [Citizen](brand)
+      - [Casio](brand) đẹp
+      - Chọn [Casio] nè
 
-  - intent: specify_gender
+  - intent: specify_gender #Chọn giới tính
     examples: |
       - [Nam](gender)
       - [Nữ](gender)
@@ -176,9 +177,12 @@ nlu:
       - Tôi đang tìm một chiếc đồng hồ [Nữ](gender)
       - Giúp tôi với, tôi cần mua đồng hồ [Nam](gender) tốt
       - Giúp tôi với, tôi cần mua đồng hồ [Nữ](gender) tốt
+      - [nữ](gender) cho đẹp
+      - [nam](gender) cho đẹp
+      - [unisex](gender) đẹp
     
 
-  - intent: buy_watch
+  - intent: buy_watch #mua đồng hồ
     examples: |
       - Tôi muốn mua đồng hồ
       - Mua đồng hồ
@@ -188,9 +192,10 @@ nlu:
       - Tôi muốn tìm một chiếc đồng hồ
       - Có đồng hồ nào không?
       - Bạn có mẫu đồng hồ nào không?
-      
+      - Hãy giới thiệu đồng hồ
+      - Tôi muốn mua đồng hồ đẹp
 
-  - intent: purchase_process
+  - intent: purchase_process #cách mua hàng
     examples: |
       - Tôi muốn biết về quy trình mua hàng
       - Làm sao để đặt hàng trên trang web?
@@ -207,7 +212,8 @@ nlu:
       - Tôi cần giúp đỡ để đặt hàng
       - Đặt hàng online như thế nào?
       - Cần làm gì để đặt mua một món hàng?
-  - intent: return_policy
+
+  - intent: return_policy #chính sách đổi trả
     examples: |
       - Chính sách đổi trả của shop như thế nào?
       - Làm thế nào để tôi đổi trả sản phẩm?
@@ -225,7 +231,7 @@ nlu:
       - Tôi có được đổi trả nếu hàng bị lỗi không?
       - Điều kiện để đổi trả hàng là gì?
 
-  - intent: track_order
+  - intent: track_order #kiểm tra đơn hàng
     examples: |
       - Tôi muốn theo dõi đơn hàng
       - Kiểm tra trạng thái đơn hàng của tôi
@@ -239,7 +245,7 @@ nlu:
       - Tôi muốn kiểm tra tình trạng đơn hàng
 
 
-  - intent: out_of_scope
+  - intent: out_of_scope #ngoài lề
     examples: |
       - Ai là tổng thống Mỹ
       - Thời tiết hôm nay thế nào
@@ -263,7 +269,10 @@ nlu:
       - Đói quá
       - Chán quá
       - Solo tay đôi hông
-  - intent: ask_warranty
+      - hôm nay có trận đá bóng nào
+      - nước biển có màu gì
+      - Tại sao 1 ngày có 24 giờ
+  - intent: ask_warranty #chế độ bảo hành
     examples: |
       - Chế độ bảo hành đồng hồ ra sao?
       - Đồng hồ có được bảo hành không?
@@ -277,7 +286,7 @@ nlu:
       - Bảo hành đồng hồ ở đâu
     
 
-  - intent: ask_for_watch_by_rating
+  - intent: ask_for_watch_by_rating #xem đồng hồ với x đánh giá
     examples: |
       - Tôi muốn xem đồng hồ [5](rating) sao
       - Hiển thị những đồng hồ được [4](rating) sao
@@ -290,6 +299,7 @@ nlu:
       - Đồng hồ [5](rating) sao đánh giá
       - [5](rating) sao
       - [4](rating) sao
+      - [3](rating) sao
       - Đồng hồ nào có đánh giá [năm](rating) sao
       - Tôi muốn xem đồng hồ [ba](rating) sao
       - Hiển thị những đồng hồ được [hai](rating) sao
@@ -303,4 +313,18 @@ nlu:
       - [hai](rating) sao
       - [một](rating) sao
       - Đồng hồ nào có đánh giá [năm](rating) sao
+
+  - intent: return_policy+ask_warranty
+    examples: |
+      - bảo hành và đổi trả
+      - đổi trả và bảo hành
+      - bảo hành, đổi trả như nào
+
+  - intent: thank+bye
+    examples: |
+      - Cảm ơn nhé. Bye
+      - ok. Tạm biệt
+      - giỏi quá. bye bye nha
+      - thank. chào tạm biệt
+  
       

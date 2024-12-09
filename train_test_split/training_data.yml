@@ -1,0 +1,248 @@
+version: "3.1"
+nlu:
+- intent: return_policy+ask_warranty
+  examples: |
+    - bảo hành và đổi trả
+    - đổi trả và bảo hành
+- intent: thank+bye
+  examples: |
+    - Cảm ơn nhé. Bye
+    - thank. chào tạm biệt
+    - ok. Tạm biệt
+- intent: bye
+  examples: |
+    - tạm biệt
+    - bye
+    - tạm biệt em
+    - chào tạm biệt
+    - tạm biệt em nhé
+    - bye bye
+    - chào tạm biệt em
+- intent: select_brand
+  examples: |
+    - Tôi chọn [Seiko](brand)
+    - Đồng hồ [Casio](brand) đi
+    - Tôi muốn xem đồng hồ [Casio](brand)
+    - [Citizen](brand)
+    - Tôi muốn mua [Seiko](brand)
+    - Cho tôi xem [Citizen](brand)
+    - [Casio](brand) đẹp
+    - [Casio](brand)
+- intent: buy_watch
+  examples: |
+    - Có đồng hồ nào không?
+    - Tôi muốn tìm một chiếc đồng hồ
+    - Tôi muốn mua đồng hồ đẹp
+    - Tôi muốn mua đồng hồ
+    - Đồng hồ nào đẹp
+    - Mình cần mua đồng hồ
+    - Mua đồng hồ
+    - Bạn có mẫu đồng hồ nào không?
+- intent: track_order
+  examples: |
+    - Kiểm tra trạng thái đơn hàng của tôi
+    - Đơn hàng của tôi đến đâu rồi?
+    - Tôi muốn theo dõi đơn hàng
+    - Đơn hàng của tôi đã được giao chưa?
+    - Cho tôi biết thông tin về đơn hàng
+    - Xem đơn hàng của tôi đang ở đâu
+    - Theo dõi đơn hàng của tôi
+    - Tôi có thể biết tình trạng đơn hàng không?
+- intent: ask_warranty
+  examples: |
+    - Chính sách bảo hành cho đồng hồ là gì?
+    - Tôi muốn biết thông tin về bảo hành đồng hồ
+    - Bảo hành đồng hồ trong bao lâu?
+    - Bảo hành đồng hồ ở đâu
+    - Đồng hồ được bảo hành như thế nào?
+    - Nếu đồng hồ bị hỏng thì bảo hành ở đâu?
+    - Đồng hồ có được bảo hành không?
+    - Điều kiện để bảo hành đồng hồ là gì?
+- intent: thank
+  examples: |
+    - hay
+    - thank you
+    - tuyệt
+    - ok
+    - cảm ơn em nhiều nhé
+    - thanks
+    - siêu
+    - giỏi
+    - cám ơn
+- intent: greet
+  examples: |
+    - hello shop
+    - xin chào
+    - chào bạn
+    - hey
+    - cháu ơi
+    - có ai giúp mình không
+    - anh ơi
+    - mình có vài câu hỏi
+    - hi
+    - có ai ở đây không?
+    - bạn ơi
+    - chị ơi
+- intent: purchase_process
+  examples: |
+    - Tôi cần hướng dẫn về việc đặt hàng
+    - Quy trình mua hàng bao gồm những bước nào?
+    - Cần làm gì để đặt mua một món hàng?
+    - Mua hàng ở đây có dễ không?
+    - Cách thức đặt hàng như thế nào?
+    - Hướng dẫn tôi cách đặt hàng với bạn
+    - Có thể mua hàng qua website không?
+    - Tôi muốn biết về quy trình mua hàng
+    - Làm sao để đặt hàng trên trang web?
+    - Tôi cần giúp đỡ để đặt hàng
+    - Bạn có thể hướng dẫn tôi đặt hàng không?
+    - Tôi có thể đặt mua trực tuyến không?
+- intent: return_policy
+  examples: |
+    - Nếu không thích, tôi có thể trả hàng không?
+    - Hàng có thể đổi được không nếu không hài lòng?
+    - Chính sách đổi trả có khó không?
+    - Bạn có thể giải thích chính sách đổi trả không?
+    - Đổi trả sản phẩm thì phải làm sao?
+    - Chính sách đổi trả của bạn ra sao?
+    - Sản phẩm lỗi có thể trả lại không?
+    - Làm thế nào để tôi đổi trả sản phẩm?
+    - Chính sách đổi trả của shop như thế nào?
+    - Bao lâu thì tôi có thể đổi trả sản phẩm?
+    - Tôi có được đổi trả nếu hàng bị lỗi không?
+    - Tôi có thể trả hàng trong bao lâu?
+- intent: specify_gender
+  examples: |
+    - Giúp tôi với, tôi cần mua đồng hồ [Nữ](gender) tốt
+    - Tôi muốn mua đồng hồ [Nam](gender)
+    - Tôi cần đồng hồ cho [Nam](gender)
+    - Đồng hồ [Nữ](gender)
+    - Đồng hồ [Nam](gender)
+    - [Nam](gender)
+    - Bạn có mẫu [Nam](gender) nào đẹp không?
+    - Tôi đang tìm một chiếc đồng hồ [Nữ](gender)
+    - [nữ](gender) cho đẹp
+    - [Unisex](gender)
+    - Có đồng hồ [Unisex](gender) nào không?
+    - Tôi muốn mua đồng hồ [Nữ](gender)
+    - [unisex](gender) đẹp
+    - Tôi đang tìm một chiếc đồng hồ [Nam](gender)
+    - [nam](gender) cho đẹp
+    - Mua đồng hồ [Nữ](gender)
+- intent: ask_for_watch_by_rating
+  examples: |
+    - [sáu](rating) sao đồng hồ
+    - Đồng hồ được đánh giá [bốn](rating) sao
+    - Đồng hồ [5](rating) sao
+    - [3](rating) sao
+    - [4](rating) sao đồng hồ
+    - Tôi muốn xem đồng hồ [ba](rating) sao
+    - Hiển thị những đồng hồ được [4](rating) sao
+    - Hiển thị những đồng hồ được [hai](rating) sao
+    - Các đồng hồ [4](rating) sao
+    - Đồng hồ nào có đánh giá [năm](rating) sao
+    - [một](rating) sao
+    - [5](rating) sao
+    - Đồng hồ [ba](rating) sao đánh giá
+    - Đồng hồ được đánh giá [4](rating) sao
+    - Đồng hồ nào [năm](rating) sao
+    - Đồng hồ nào [5](rating) sao
+    - [4](rating) sao
+    - [hai](rating) sao
+    - Đồng hồ [bốn](rating) sao
+- intent: ask_name
+  examples: |
+    - chúng ta nên biết tên nhau nhỉ?
+    - để tiện xưng hô thì tên bạn là gì
+    - tên em
+    - tên của chị là gì
+    - tên em là gì
+    - bạn có vui lòng cho mình biết tên được không
+    - chị tên gì
+    - tên của bạn là gì
+    - tên bạn
+    - mình muốn biết tên bạn
+    - anh tên gì
+    - cho em xin tên của anh ạ
+    - tên gì
+    - vui lòng cho mình biết tên nhé
+    - vậy thì tên bạn là gì
+    - cho mình hỏi tên nhé
+    - tên của anh là gì
+    - bạn tên gì
+    - xin phép hỏi tên của bạn
+    - cho em xin tên của chị ạ
+- intent: out_of_scope
+  examples: |
+    - Bạn có biết chơi cờ vua không
+    - hôm nay có trận đá bóng nào
+    - Ai là ca sĩ nổi tiếng nhất hiện nay
+    - Đói quá
+    - Làm thế nào để nấu một bát phở ngon
+    - Chán quá
+    - Bạn có thích xem phim không
+    - Đường đến nhà ga gần nhất ở đâu
+    - Bạn thích ăn món gì
+    - Solo tay đôi hông
+    - Tại sao bầu trời lại có màu xanh
+    - nước biển có màu gì
+    - Bạn nghĩ gì về trí tuệ nhân tạo
+    - Thời tiết hôm nay thế nào
+    - Có cách nào học tiếng Anh nhanh không
+    - Bạn đã từng đi đến Việt Nam chưa
+    - Bạn biết ai phát minh ra điện thoại không
+    - Làm thế nào để trở thành người giàu có
+    - Ai là tổng thống Mỹ
+    - Tại sao 1 ngày có 24 giờ
+- intent: give_name
+  examples: |
+    - [Mình](cust_sex) tên là [Khang](cust_name)
+    - [Anh](cust_sex) [Bảo](cust_name) đây
+    - [Bà](cust_sex) là [Liên](cust_name)
+    - [Tôi](cust_sex) là [Huy](cust_name) đây
+    - [Anh](cust_sex) [Bảo](cust_name)
+    - [Anh](cust_sex) tên [Đức](cust_name)
+    - [Anh](cust_sex) [Bảo Phạm](cust_name)
+    - [Xuân Vũ](cust_name)
+    - [Em](cust_sex) tên là [Linh](cust_name)
+    - [Vũ](cust_name)
+    - [Cô](cust_sex) tên là [Lan](cust_name)
+    - [Chị](cust_sex) [Hằng Nga](cust_name)
+    - [Con](cust_sex) tên [Hà](cust_name)
+    - [Chú](cust_sex) là [Toàn](cust_name)
+    - [Cháu](cust_sex) tên là [Long](cust_name)
+    - tên [Bảo](cust_name)
+    - [Chị](cust_sex) là [Ngọc](cust_name)
+    - [Chú](cust_sex) [Gia Tuấn](cust_name)
+    - [Ông](cust_sex) tên [Phúc](cust_name)
+    - [Chú](cust_sex) [Tuấn](cust_name)
+    - [Cô](cust_sex) [Xuân Mai](cust_name)
+    - [Gọi tôi](cust_sex) là [Thành](cust_name)
+    - [Anh](cust_sex) là [Hải](cust_name)
+    - [Tên của mình](cust_sex) là [Tuấn](cust_name)
+- intent: ask_func_list
+  examples: |
+    - có làm được gì
+    - bạn giỏi nhất làm gì
+    - bạn giỏi hỗ trợ nhất trong lĩnh vực gì
+    - em làm được gì
+    - bạn có thể làm được mấy chức năng
+    - bạn biết làm gì
+    - bạn giúp được gì nào
+    - bạn có thể làm được những gì
+    - cho mình biết bạn làm được gì nhé
+    - làm được gì
+    - biết làm gì
+    - chẳng biết bạn làm được gì
+    - em biết làm gì
+    - bạn tệ nhất trong việc gì
+    - bạn biết được những lĩnh vực gì
+    - em giúp được gì
+    - bạn có thể làm gì
+    - việc gì bạn làm được
+    - bạn giúp được mình gì nào
+    - bạn hữu dụng như thế nào
+    - có làm được trò gì
+    - lĩnh vực gì bạn giỏi nhất
+    - mình tò mò về những việc bạn làm được
+    - bạn có tư vấn giúp mình được không

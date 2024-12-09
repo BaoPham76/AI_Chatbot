@@ -8,15 +8,14 @@ assistant_id: 20241010-200900-slow-bourbon
 # Configuration for Rasa NLU.
 language: en
 pipeline:
-  - name: WhitespaceTokenizer
+  - name: "WhitespaceTokenizer"
   - name: "CountVectorsFeaturizer"
   - name: "CountVectorsFeaturizer"
     analyzer: "char_wb"
     min_ngram: 1
     max_ngram: 4
-  - name: DIETClassifier
+  - name: "DIETClassifier"
     epochs: 100
-    num_transformer_layers: 2
 # Configuration for Rasa Core.
 policies:
   - name: MemoizationPolicy

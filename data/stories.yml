@@ -1,7 +1,6 @@
 version: "3.1"
 
 stories:
-
   - story: greet user with name
     steps:
       - intent: greet
@@ -90,6 +89,18 @@ stories:
     steps:
       - intent: ask_warranty
       - action: utter_ask_warranty
+
+  - story: check warranty and return
+    steps:
+      - intent: return_policy+ask_warranty
+      - action: utter_return_policy
+      - action: utter_ask_warranty
+
+  - story: thank and bye
+    steps:
+      - intent: thank+bye
+      - action: utter_thank
+      - action: utter_bye
 
   - story: User asks for watches by rating
     steps:

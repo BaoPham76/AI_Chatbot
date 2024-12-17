@@ -1,3 +1,333 @@
+#version: "3.1"
+#
+#nlu:
+#  - intent: give_name #đưa tên
+#    examples: |
+#      - [Tên tôi](cust_sex) là [Minh](cust_name)
+#      - [Anh](cust_sex) tên [Đức](cust_name)
+#      - [Em](cust_sex) tên là [Linh](cust_name)
+#      - [Chị](cust_sex) là [Ngọc](cust_name)
+#      - [Cháu](cust_sex) tên là [Long](cust_name)
+#      - [Ông](cust_sex) tên [Phúc](cust_name)
+#      - [Bà](cust_sex) là [Liên](cust_name)
+#      - [Con](cust_sex) tên [Hà](cust_name)
+#      - [Cô](cust_sex) tên là [Lan](cust_name)
+#      - [Chú](cust_sex) là [Toàn](cust_name)
+#      - [Bé](cust_sex) là [Mai](cust_name)
+#      - [Tên của mình](cust_sex) là [Tuấn](cust_name)
+#      - [Mình](cust_sex) tên là [Khang](cust_name)
+#      - [Gọi tôi](cust_sex) là [Thành](cust_name)
+#      - [Tôi](cust_sex) là [Minh](cust_name)
+#      - [Tôi](cust_sex) là [Huy](cust_name) đây
+#      - [Anh](cust_sex) là [Hải](cust_name)
+#      - [Chú](cust_sex) [Tuấn](cust_name)
+#      - [Chú](cust_sex) [Gia Tuấn](cust_name)
+#      - [Cô](cust_sex) [Mai](cust_name)
+#      - [Cô](cust_sex) [Xuân Mai](cust_name)
+#      - [Anh](cust_sex) [Bảo](cust_name)
+#      - [Anh](cust_sex) [Bảo Phạm](cust_name)
+#      - [Anh](cust_sex) [Bảo](cust_name) đây
+#      - [Chị](cust_sex) [Hằng](cust_name)
+#      - [Chị](cust_sex) [Hằng Nga](cust_name)
+#      - [Vũ](cust_name)
+#      - [Xuân Vũ](cust_name)
+#      - tên [Bảo](cust_name)
+#      - tên [Tuấn KKhang](cust_name)
+#
+#
+#
+#
+#
+#
+#  - intent: greet #chào hỏi
+#    examples: |
+#      - xin chào
+#      - chào bạn
+#      - hello
+#      - hi
+#      - hey
+#      - mình có vài câu hỏi
+#      - có ai giúp mình không
+#      - bạn ơi
+#      - anh ơi
+#      - chị ơi
+#      - cháu ơi
+#      - chào
+#      - có ai ở đây không?
+#      - chào buổi sáng
+#      - hello shop
+#
+#  - intent: bye #tạm biệt
+#    examples: |
+#      - tạm biệt
+#      - chào tạm biệt
+#      - chào tạm biệt em
+#      - tạm biệt em
+#      - tạm biệt em nhé
+#      - bye
+#      - bye bye
+#      - bye nha
+#
+#  - intent: thank #cảm ơn
+#    examples: |
+#      - chuẩn
+#      - hay
+#      - siêu
+#      - tuyệt
+#      - cám ơn
+#      - thanks
+#      - thank you
+#      - ok
+#      - cảm ơn em
+#      - cảm ơn em nhiều nhé
+#      - cảm ơn
+#      - giỏi
+#
+#  - intent: ask_func_list #hỏi chức năng
+#    examples: |
+#      - bạn có thể làm được những gì
+#      - bạn giúp được gì nào
+#      - chức năng của bạn là gì
+#      - bạn có thể làm được mấy chức năng
+#      - bạn giỏi nhất làm gì
+#      - bạn có tư vấn giúp mình được không
+#      - việc gì bạn làm được
+#      - kể xem bạn làm được gì
+#      - cho mình biết bạn làm được gì nhé
+#      - bạn hữu dụng như thế nào
+#      - bạn có ích trong những việc gì
+#      - lĩnh vực gì bạn giỏi nhất
+#      - mình tò mò về những việc bạn làm được
+#      - chẳng biết bạn làm được gì
+#      - bạn tệ nhất trong việc gì
+#      - bạn biết được những lĩnh vực gì
+#      - bạn giỏi hỗ trợ nhất trong lĩnh vực gì
+#      - kể cho mình biết những việc bạn có thể làm được nhé
+#      - nói cho mình về những việc bạn giúp được mình
+#      - bạn giúp được mình gì nào
+#      - bạn có thể làm gì
+#      - em giúp được gì
+#      - em làm được gì
+#      - mày biết làm gì
+#      - em biết làm gì
+#      - bạn biết làm gì
+#      - biết làm gì
+#      - làm được gì
+#      - có làm được gì
+#      - có làm được trò gì
+#
+#  - intent: ask_name #hỏi tên chatbot
+#    examples: |
+#      - bạn tên gì
+#      - tên gì
+#      - chị tên gì
+#      - anh tên gì
+#      - tên của bạn là gì
+#      - tên của chị là gì
+#      - tên của anh là gì
+#      - cho mình hỏi tên nhé
+#      - mình muốn biết tên bạn
+#      - mình muốn tiện xưng hô hơn, cho mình biết tên nhé
+#      - để tiện xưng hô thì tên bạn là gì
+#      - cho em xin tên của anh ạ
+#      - cho em xin tên của chị ạ
+#      - được biết tên bạn thì tốt nhỉ
+#      - vui lòng cho mình biết tên nhé
+#      - xin phép hỏi tên của bạn
+#      - vậy thì tên bạn là gì
+#      - tên bạn trong tiếng việt là gì
+#      - bạn có vui lòng cho mình biết tên được không
+#      - chúng ta nên biết tên nhau nhỉ?
+#      - em tên là gì thế
+#      - tên em là gì
+#      - tên em
+#      - tên bạn
+#      - bạn tên là gì
+#
+#
+#  - intent: select_brand #Chọn thương hiệu
+#    examples: |
+#      - Tôi muốn xem đồng hồ [Casio](brand)
+#      - Cho tôi xem [Citizen](brand)
+#      - Tôi chọn [Seiko](brand)
+#      - Đồng hồ [Casio](brand) đi
+#      - Tôi muốn mua [Seiko](brand)
+#      - [Casio](brand)
+#      - Tôi chọn [Tissot](brand)
+#      - [Citizen](brand)
+#      - [Casio](brand) đẹp
+#      - Chọn [Casio] nè
+#
+#  - intent: specify_gender #Chọn giới tính
+#    examples: |
+#      - [Nam](gender)
+#      - [Nữ](gender)
+#      - [Unisex](gender)
+#      - Tôi cần đồng hồ cho [Nam](gender)
+#      - Tôi muốn một đồng hồ [Nữ](gender)
+#      - Có đồng hồ [Unisex](gender) nào không?
+#      - Bạn có mẫu [Nam](gender) nào đẹp không?
+#      - Đồng hồ [Nam](gender)
+#      - Đồng hồ [Nữ](gender)
+#      - Mua đồng hồ [Nam](gender)
+#      - Mua đồng hồ [Nữ](gender)
+#      - Tôi muốn mua đồng hồ [Nam](gender)
+#      - Tôi muốn mua đồng hồ [Nữ](gender)
+#      - Tôi đang tìm một chiếc đồng hồ [Nam](gender)
+#      - Tôi đang tìm một chiếc đồng hồ [Nữ](gender)
+#      - Giúp tôi với, tôi cần mua đồng hồ [Nam](gender) tốt
+#      - Giúp tôi với, tôi cần mua đồng hồ [Nữ](gender) tốt
+#      - [nữ](gender) cho đẹp
+#      - [nam](gender) cho đẹp
+#      - [unisex](gender) đẹp
+#
+#
+#  - intent: buy_watch #mua đồng hồ
+#    examples: |
+#      - Tôi muốn mua đồng hồ
+#      - Mua đồng hồ
+#      - Cho tôi xem đồng hồ
+#      - Mình cần mua đồng hồ
+#      - Đồng hồ nào đẹp
+#      - Tôi muốn tìm một chiếc đồng hồ
+#      - Có đồng hồ nào không?
+#      - Bạn có mẫu đồng hồ nào không?
+#      - Hãy giới thiệu đồng hồ
+#      - Tôi muốn mua đồng hồ đẹp
+#
+#  - intent: purchase_process #cách mua hàng
+#    examples: |
+#      - Tôi muốn biết về quy trình mua hàng
+#      - Làm sao để đặt hàng trên trang web?
+#      - Bạn có thể hướng dẫn tôi đặt hàng không?
+#      - Cách thức đặt hàng như thế nào?
+#      - Tôi cần hướng dẫn về việc đặt hàng
+#      - Mua hàng ở đây có dễ không?
+#      - Tôi có thể đặt mua trực tuyến không?
+#      - Quy trình mua hàng bao gồm những bước nào?
+#      - Cách mua hàng trên trang như thế nào?
+#      - Quy trình để mua một sản phẩm là gì?
+#      - Có thể mua hàng qua website không?
+#      - Hướng dẫn tôi cách đặt hàng với bạn
+#      - Tôi cần giúp đỡ để đặt hàng
+#      - Đặt hàng online như thế nào?
+#      - Cần làm gì để đặt mua một món hàng?
+#
+#  - intent: return_policy #chính sách đổi trả
+#    examples: |
+#      - Chính sách đổi trả của shop như thế nào?
+#      - Làm thế nào để tôi đổi trả sản phẩm?
+#      - Chính sách đổi trả có khó không?
+#      - Tôi có thể trả hàng trong bao lâu?
+#      - Bạn có thể giải thích chính sách đổi trả không?
+#      - Chính sách đổi trả của bạn ra sao?
+#      - Hàng có thể đổi được không nếu không hài lòng?
+#      - Nếu không thích, tôi có thể trả hàng không?
+#      - Cửa hàng có nhận hàng trả lại không?
+#      - Bao lâu thì tôi có thể đổi trả sản phẩm?
+#      - Tôi muốn biết chính sách đổi trả
+#      - Sản phẩm lỗi có thể trả lại không?
+#      - Đổi trả sản phẩm thì phải làm sao?
+#      - Tôi có được đổi trả nếu hàng bị lỗi không?
+#      - Điều kiện để đổi trả hàng là gì?
+#
+#  - intent: track_order #kiểm tra đơn hàng
+#    examples: |
+#      - Tôi muốn theo dõi đơn hàng
+#      - Kiểm tra trạng thái đơn hàng của tôi
+#      - Xem đơn hàng của tôi đang ở đâu
+#      - Cho tôi biết thông tin về đơn hàng
+#      - Đơn hàng của tôi đến đâu rồi?
+#      - Theo dõi đơn hàng của tôi
+#      - Tôi có thể biết tình trạng đơn hàng không?
+#      - Đơn hàng của tôi đã được giao chưa?
+#      - Kiểm tra đơn hàng
+#      - Tôi muốn kiểm tra tình trạng đơn hàng
+#
+#
+#  - intent: out_of_scope #ngoài lề
+#    examples: |
+#      - Ai là tổng thống Mỹ
+#      - Thời tiết hôm nay thế nào
+#      - Bạn biết chơi bóng đá không
+#      - Đường đến nhà ga gần nhất ở đâu
+#      - Bạn thích ăn món gì
+#      - Bạn có biết chơi cờ vua không
+#      - Ai là ca sĩ nổi tiếng nhất hiện nay
+#      - Hôm nay có trận bóng đá nào không
+#      - Tại sao bầu trời lại có màu xanh
+#      - Bạn có thích xem phim không
+#      - Chó hay mèo thông minh hơn
+#      - Làm thế nào để nấu một bát phở ngon
+#      - Bạn nghĩ gì về trí tuệ nhân tạo
+#      - Tôi nên đi du lịch ở đâu vào mùa hè này
+#      - Bạn biết ai phát minh ra điện thoại không
+#      - Làm thế nào để trở thành người giàu có
+#      - Có cách nào học tiếng Anh nhanh không
+#      - Bạn đã từng đi đến Việt Nam chưa
+#      - Vé số hôm nay ra con gì
+#      - Đói quá
+#      - Chán quá
+#      - Solo tay đôi hông
+#      - hôm nay có trận đá bóng nào
+#      - nước biển có màu gì
+#      - Tại sao 1 ngày có 24 giờ
+#  - intent: ask_warranty #chế độ bảo hành
+#    examples: |
+#      - Chế độ bảo hành đồng hồ ra sao?
+#      - Đồng hồ có được bảo hành không?
+#      - Chính sách bảo hành cho đồng hồ là gì?
+#      - Bảo hành đồng hồ trong bao lâu?
+#      - Đồng hồ được bảo hành như thế nào?
+#      - Nếu đồng hồ bị hỏng thì bảo hành ở đâu?
+#      - Tôi muốn biết thông tin về bảo hành đồng hồ
+#      - Điều kiện để bảo hành đồng hồ là gì?
+#      - Bảo hành đồng hồ
+#      - Bảo hành đồng hồ ở đâu
+#
+#
+#  - intent: ask_for_watch_by_rating #xem đồng hồ với x đánh giá
+#    examples: |
+#      - Tôi muốn xem đồng hồ [5](rating) sao
+#      - Hiển thị những đồng hồ được [4](rating) sao
+#      - Đồng hồ [5](rating) sao
+#      - Những đồng hồ [3](rating) sao
+#      - Đồng hồ được đánh giá [4](rating) sao
+#      - Các đồng hồ [4](rating) sao
+#      - Đồng hồ nào [5](rating) sao
+#      - [4](rating) sao đồng hồ
+#      - Đồng hồ [5](rating) sao đánh giá
+#      - [5](rating) sao
+#      - [4](rating) sao
+#      - [3](rating) sao
+#      - Đồng hồ nào có đánh giá [năm](rating) sao
+#      - Tôi muốn xem đồng hồ [ba](rating) sao
+#      - Hiển thị những đồng hồ được [hai](rating) sao
+#      - Đồng hồ [bốn](rating) sao
+#      - Những đồng hồ [ba](rating) sao
+#      - Đồng hồ được đánh giá [bốn](rating) sao
+#      - Các đồng hồ [bốn](rating) sao
+#      - Đồng hồ nào [năm](rating) sao
+#      - [sáu](rating) sao đồng hồ
+#      - Đồng hồ [ba](rating) sao đánh giá
+#      - [hai](rating) sao
+#      - [một](rating) sao
+#      - Đồng hồ nào có đánh giá [năm](rating) sao
+#
+#  - intent: return_policy+ask_warranty
+#    examples: |
+#      - bảo hành và đổi trả
+#      - đổi trả và bảo hành
+#      - bảo hành, đổi trả như nào
+#
+#  - intent: thank+bye
+#    examples: |
+#      - Cảm ơn nhé. Bye
+#      - ok. Tạm biệt
+#      - giỏi quá. bye bye nha
+#      - thank. chào tạm biệt
+
+
 version: "3.1"
 
 nlu:
@@ -33,12 +363,36 @@ nlu:
       - [Xuân Vũ](cust_name)
       - tên [Bảo](cust_name)
       - tên [Tuấn KKhang](cust_name)
-      
-      
-      
-      
-      
-
+      - [Ten toi](cust_sex) la [Minh](cust_name)
+      - [Anh](cust_sex) ten [Duc](cust_name)
+      - [Em](cust_sex) ten la [Linh](cust_name)
+      - [Chi](cust_sex) la [Ngoc](cust_name)
+      - [Chau](cust_sex) ten la [Long](cust_name)
+      - [Ong](cust_sex) ten [Phuc](cust_name)
+      - [Ba](cust_sex) la [Lien](cust_name)
+      - [Con](cust_sex) ten [Ha](cust_name)
+      - [Co](cust_sex) ten la [Lan](cust_name)
+      - [Chu](cust_sex) la [Toan](cust_name)
+      - [Be](cust_sex) la [Mai](cust_name)
+      - [Ten cua minh](cust_sex) la [Tuan](cust_name)
+      - [Minh](cust_sex) ten la [Khang](cust_name)
+      - [Goi toi](cust_sex) la [Thanh](cust_name)
+      - [Toi](cust_sex) la [Minh](cust_name)
+      - [Toi](cust_sex) la [Huy](cust_name) day
+      - [Anh](cust_sex) la [Hai](cust_name)
+      - [Chu](cust_sex) [Tuan](cust_name)
+      - [Chu](cust_sex) [Gia Tuan](cust_name)
+      - [Co](cust_sex) [Mai](cust_name)
+      - [Co](cust_sex) [Xuan Mai](cust_name)
+      - [Anh](cust_sex) [Bao](cust_name)
+      - [Anh](cust_sex) [Bao Pham](cust_name)
+      - [Anh](cust_sex) [Bao](cust_name) day
+      - [Chi](cust_sex) [Hang](cust_name)
+      - [Chi](cust_sex) [Hang Nga](cust_name)
+      - [Vu](cust_name)
+      - [Xuan Vu](cust_name)
+      - ten [Bao](cust_name)
+      - ten [Tuan Khang](cust_name)
   - intent: greet #chào hỏi
     examples: |
       - xin chào
@@ -56,6 +410,17 @@ nlu:
       - có ai ở đây không?
       - chào buổi sáng
       - hello shop
+      - xin chao
+      - chao ban
+      - minh co vai cau hoi
+      - co ai giup minh khong
+      - ban oi
+      - anh oi
+      - chi oi
+      - chau oi
+      - chao 
+      - co ai o day khong
+      - chao buoi sang
 
   - intent: bye #tạm biệt
     examples: |
@@ -66,6 +431,12 @@ nlu:
       - tạm biệt em nhé
       - bye
       - bye bye
+      - bye nha
+      - tam biet
+      - chao tam biet
+      - chao tam biet em
+      - tam biet em
+      - tam biet em nhe
       - bye nha
 
   - intent: thank #cảm ơn
@@ -82,6 +453,15 @@ nlu:
       - cảm ơn em nhiều nhé
       - cảm ơn
       - giỏi
+      - chuan
+      - hay
+      - sieu
+      - tuyet
+      - cam on
+      - cam on em
+      - cam on em nhieu nhe
+      - cam on
+      - gioi
 
   - intent: ask_func_list #hỏi chức năng
     examples: |
@@ -114,7 +494,37 @@ nlu:
       - biết làm gì
       - làm được gì 
       - có làm được gì 
-      - có làm được trò gì 
+      - có làm được trò gì
+      - ban co the lam duoc nhung gi
+      - ban giup duoc gi nao
+      - chuc nang cua ban la gi
+      - ban co the lam duoc may chuc nang
+      - ban gioi nhat lam gi
+      - ban co tu van giup minh duoc khong
+      - viec gi ban lam duoc
+      - ke xem ban lam duoc gi
+      - cho minh biet ban lam duoc gi nhe
+      - ban huu dung nhu the nao
+      - ban co ich trong nhung viec gi
+      - linh vuc gi ban gioi nhat
+      - minh to mo ve nhung viec ban lam duoc
+      - chang biet ban lam duoc gi
+      - ban te nhat trong viec gi
+      - ban biet duoc nhung linh vuc gi
+      - ban gioi ho tro nhat trong linh vuc gi
+      - ke cho minh biet nhung viec ban co the lam duoc nhe
+      - noi cho minh ve nhung viec ban giup duoc minh
+      - ban giup duoc minh gi nao
+      - ban co the lam gi
+      - em giup duoc gi
+      - em lam duoc gi
+      - may biet lam gi
+      - em biet lam gi
+      - ban biet lam gi
+      - biet lam gi
+      - lam duoc gi
+      - co lam duoc gi
+      - co lam duoc tro gi
 
   - intent: ask_name #hỏi tên chatbot
     examples: |
@@ -142,7 +552,32 @@ nlu:
       - tên em là gì
       - tên em 
       - tên bạn 
-      - bạn tên là gì 
+      - bạn tên là gì
+      - ban ten gi
+      - ten gi
+      - chi ten gi
+      - anh ten gi
+      - ten cua ban la gi
+      - ten cua chi la gi
+      - ten cua anh la gi
+      - cho minh hoi ten nhe
+      - minh muon biet ten ban
+      - minh muon tien xung ho hon, cho minh biet ten nhe
+      - de tien xung ho thi ten ban la gi
+      - cho em xin ten cua anh a
+      - cho em xin ten cua chi a
+      - duoc biet ten ban thi tot nhi
+      - vui long cho minh biet ten nhe
+      - xin phep hoi ten cua ban
+      - vay thi ten ban la gi
+      - ten ban trong tieng viet la gi
+      - ban co vui long cho minh biet ten duoc khong
+      - chung ta nen biet ten nhau nhi?
+      - em ten la gi the
+      - ten em la gi
+      - ten em
+      - ten ban
+      - ban ten la gi
 
 
   - intent: select_brand #Chọn thương hiệu
@@ -150,13 +585,16 @@ nlu:
       - Tôi muốn xem đồng hồ [Casio](brand)
       - Cho tôi xem [Citizen](brand)
       - Tôi chọn [Seiko](brand)
+      - Tôi chọn [GShock](brand)
       - Đồng hồ [Casio](brand) đi
       - Tôi muốn mua [Seiko](brand)
       - [Casio](brand)
       - Tôi chọn [Tissot](brand)
       - [Citizen](brand)
       - [Casio](brand) đẹp
-      - Chọn [Casio] nè
+      - Chọn [Casio](brand) nè
+      - [Omega](brand)
+      - [Rolex](brand)
 
   - intent: specify_gender #Chọn giới tính
     examples: |
@@ -180,6 +618,26 @@ nlu:
       - [nữ](gender) cho đẹp
       - [nam](gender) cho đẹp
       - [unisex](gender) đẹp
+      - [Nam](gender)
+      - [Nu](gender)
+      - [Unisex](gender)
+      - Toi can dong ho cho [Nam](gender)
+      - Toi muon mot dong ho [Nu](gender)
+      - Co dong ho [Unisex](gender) nao khong?
+      - Ban co mau [Nam](gender) nao dep khong?
+      - Dong ho [Nam](gender)
+      - Dong ho [Nu](gender)
+      - Mua dong ho [Nam](gender)
+      - Mua dong ho [Nu](gender)
+      - Toi muon mua dong ho [Nam](gender)
+      - Toi muon mua dong ho [Nu](gender)
+      - Toi dang tim mot chiec dong ho [Nam](gender)
+      - Toi dang tim mot chiec dong ho [Nu](gender)
+      - Giup toi voi, toi can mua dong ho [Nam](gender) tot
+      - Giup toi voi, toi can mua dong ho [Nu](gender) tot
+      - [nu](gender) cho dep
+      - [nam](gender) cho dep
+      - [unisex](gender) dep
     
 
   - intent: buy_watch #mua đồng hồ
@@ -194,6 +652,16 @@ nlu:
       - Bạn có mẫu đồng hồ nào không?
       - Hãy giới thiệu đồng hồ
       - Tôi muốn mua đồng hồ đẹp
+      - Toi muon mua dong ho
+      - Mua dong ho
+      - Cho toi xem dong ho
+      - Minh can mua dong ho
+      - Dong ho nao dep
+      - Toi muon tim mot chiec dong ho
+      - Co dong ho nao khong?
+      - Ban co mau dong ho nao khong?
+      - Hay gioi thieu dong ho
+      - Toi muon mua dong ho dep
 
   - intent: purchase_process #cách mua hàng
     examples: |
@@ -211,7 +679,21 @@ nlu:
       - Hướng dẫn tôi cách đặt hàng với bạn
       - Tôi cần giúp đỡ để đặt hàng
       - Đặt hàng online như thế nào?
-      - Cần làm gì để đặt mua một món hàng?
+      - Toi muon biet ve quy trinh mua hang
+      - Lam sao de dat hang tren trang web?
+      - Ban co the huong dan toi dat hang khong?
+      - Cach thuc dat hang nhu the nao?
+      - Toi can huong dan ve viec dat hang
+      - Mua hang o day co de khong?
+      - Toi co the dat mua truc tuyen khong?
+      - Quy trinh mua hang bao gom nhung buoc nao?
+      - Cach mua hang tren trang nhu the nao?
+      - Quy trinh de mua mot san pham la gi?
+      - Co the mua hang qua website khong?
+      - Huong dan toi cach dat hang voi ban
+      - Toi can giup do de dat hang
+      - Dat hang online nhu the nao?
+      - Can lam gi de dat mua mot mon hang?
 
   - intent: return_policy #chính sách đổi trả
     examples: |
@@ -230,6 +712,21 @@ nlu:
       - Đổi trả sản phẩm thì phải làm sao?
       - Tôi có được đổi trả nếu hàng bị lỗi không?
       - Điều kiện để đổi trả hàng là gì?
+      - Chinh sach doi tra cua shop nhu the nao?
+      - Lam the nao de toi doi tra san pham?
+      - Chinh sach doi tra co kho khong?
+      - Toi co the tra hang trong bao lau?
+      - Ban co the giai thich chinh sach doi tra khong?
+      - Chinh sach doi tra cua ban ra sao?
+      - Hang co the doi duoc khong neu khong hai long?
+      - Neu khong thich, toi co the tra hang khong?
+      - Cua hang co nhan hang tra lai khong?
+      - Bao lau thi toi co the doi tra san pham?
+      - Toi muon biet chinh sach doi tra
+      - San pham loi co the tra lai khong?
+      - Doi tra san pham thi phai lam sao?
+      - Toi co duoc doi tra neu hang bi loi khong?
+      - Dieu kien de doi tra hang la gi?
 
   - intent: track_order #kiểm tra đơn hàng
     examples: |
@@ -243,6 +740,16 @@ nlu:
       - Đơn hàng của tôi đã được giao chưa?
       - Kiểm tra đơn hàng
       - Tôi muốn kiểm tra tình trạng đơn hàng
+      - Toi muon theo doi don hang
+      - Kiem tra trang thai don hang cua toi
+      - Xem don hang cua toi dang o dau
+      - Cho toi biet thong tin ve don hang
+      - Don hang cua toi den dau roi?
+      - Theo doi don hang cua toi
+      - Toi co the biet tinh trang don hang khong?
+      - Don hang cua toi da duoc giao chua?
+      - Kiem tra don hang
+      - Toi muon kiem tra tinh trang don hang
 
 
   - intent: out_of_scope #ngoài lề
@@ -272,6 +779,32 @@ nlu:
       - hôm nay có trận đá bóng nào
       - nước biển có màu gì
       - Tại sao 1 ngày có 24 giờ
+      - Ai la tong thong My
+      - Thoi tiet hom nay the nao
+      - Ban biet choi bong da khong
+      - Duong den nha ga gan nhat o dau
+      - Ban thich an mon gi
+      - Ban co biet choi co vua khong
+      - Ai la ca si noi tieng nhat hien nay
+      - Hom nay co tran bong da nao khong
+      - Tai sao bau troi lai co mau xanh
+      - Ban co thich xem phim khong
+      - Cho hay meo thong minh hon
+      - Lam the nao de nau mot bat pho ngon
+      - Ban nghi gi ve tri tue nhan tao
+      - Toi nen di du lich o dau vao mua he nay
+      - Ban biet ai phat minh ra dien thoai khong
+      - Lam the nao de tro thanh nguoi giau co
+      - Co cach nao hoc tieng Anh nhanh khong
+      - Ban da tung di den Viet Nam chua
+      - Ve so hom nay ra con gi
+      - Doi qua
+      - Chan qua
+      - Solo tay doi hong
+      - hom nay co tran da bong nao
+      - nuoc bien co mau gi
+      - Tai sao 1 ngay co 24 gio
+
   - intent: ask_warranty #chế độ bảo hành
     examples: |
       - Chế độ bảo hành đồng hồ ra sao?
@@ -284,7 +817,17 @@ nlu:
       - Điều kiện để bảo hành đồng hồ là gì?
       - Bảo hành đồng hồ
       - Bảo hành đồng hồ ở đâu
-    
+      - Che do bao hanh dong ho ra sao?
+      - Dong ho co duoc bao hanh khong?
+      - Chinh sach bao hanh cho dong ho la gi?
+      - Bao hanh dong ho trong bao lau?
+      - Dong ho duoc bao hanh nhu the nao?
+      - Neu dong ho bi hong thi bao hanh o dau?
+      - Toi muon biet thong tin ve bao hanh dong ho
+      - Dieu kien de bao hanh dong ho la gi?
+      - Bao hanh dong ho
+      - Bao hanh dong ho o dau
+
 
   - intent: ask_for_watch_by_rating #xem đồng hồ với x đánh giá
     examples: |
@@ -313,12 +856,108 @@ nlu:
       - [hai](rating) sao
       - [một](rating) sao
       - Đồng hồ nào có đánh giá [năm](rating) sao
+      - Toi muon xem dong ho [5](rating) sao
+      - Hien thi nhung dong ho duoc [4](rating) sao
+      - Dong ho [5](rating) sao
+      - Nhung dong ho [3](rating) sao
+      - Dong ho duoc danh gia [4](rating) sao
+      - Cac dong ho [4](rating) sao
+      - Dong ho nao [5](rating) sao
+      - [4](rating) sao dong ho
+      - Dong ho [5](rating) sao danh gia
+      - [5](rating) sao
+      - [4](rating) sao
+      - [3](rating) sao
+      - Dong ho nao co danh gia [nam](rating) sao
+      - Toi muon xem dong ho [ba](rating) sao
+      - Hien thi nhung dong ho duoc [hai](rating) sao
+      - Dong ho [bon](rating) sao
+      - Nhung dong ho [ba](rating) sao
+      - Dong ho duoc danh gia [bon](rating) sao
+      - Cac dong ho [bon](rating) sao
+      - Dong ho nao [nam](rating) sao
+      - [sau](rating) sao dong ho
+      - Dong ho [ba](rating) sao danh gia
+      - [hai](rating) sao
+      - [mot](rating) sao
+      - Dong ho nao co danh gia [nam](rating) sao
+  
+
+  - intent: ask_address
+    examples: |
+      - Địa chỉ của shop ở đâu
+      - Cửa hàng nằm vị trí nào
+      - Cho mình xin địa chỉ của shop
+      - Có cửa hàng nào gần đây không
+      - Cửa hàng của bạn nằm ở đâu
+      - Xin địa chỉ cửa hàng
+      - Vị trí cửa hàng
+      - Shop nằm ở đâu
+      - Cho tôi xin vị trí của bạn nhé
+      - Cho tôi biết cửa hàng nằm ở đâu được không
+      - Tôi có thể ghé cửa hàng không
+      - Tôi muốn đi đến tận nơi tận cửa hàng
+      - Ghé shop nha
+      - Vị trí
+      - Địa chỉ
+      - Dia chi cua shop o dau
+      - Cua hang nam vi tri nao
+      - Cho minh xin dia chi cua shop
+      - Co cua hang nao gan day khong
+      - Cua hang cua ban nam o dau
+      - Xin dia chi cua hang
+      - Vi tri cua hang
+      - Shop nam o dau
+      - Cho toi xin vi tri cua ban nhe
+      - Cho toi biet cua hang nam o dau duoc khong
+      - Toi co the ghe cua hang khong
+      - Ghe shop nha
+      - Toi muon di den tan noi tan cua hang
+      - Vi tri
+      - Dia chi
+
+  - intent: ask_operating_time
+    examples: |
+      - Cửa hàng mở lúc mấy giờ?
+      - Thời gian hoạt động của cửa hàng
+      - Cửa hàng làm việc từ mấy giờ đến mấy giờ?
+      - Bạn mở cửa lúc mấy giờ?
+      - Mấy giờ cửa hàng đóng cửa?
+      - Mấy giờ cửa hàng bắt đầu mở?
+      - Khi nào cửa hàng đóng cửa?
+      - Thời gian làm việc của cửa hàng
+      - Shop làm việc đến mấy giờ?
+      - Cửa hàng làm việc từ mấy giờ đến mấy giờ vậy?
+      - Cửa hàng đóng cửa vào lúc mấy giờ?
+      - Giờ mở cửa của cửa hàng là bao nhiêu?
+      - Bạn có thể cho tôi biết giờ mở cửa của cửa hàng được không?
+      - Cửa hàng mở cửa vào lúc nào?
+      - Khi nào cửa hàng đóng cửa?
+      - Cua hang mo luc may gio?
+      - Thoi gian hoat dong cua cua hang
+      - Cua hang lam viec tu may gio den may gio?
+      - Ban mo cua luc may gio?
+      - May gio cua hang dong cua?
+      - May gio cua hang bat dau mo?
+      - Khi nao cua hang dong cua?
+      - Thoi gian lam viec cua cua hang
+      - Shop lam viec den may gio?
+      - Cua hang lam viec tu may gio den may gio vay?
+      - Cua hang dong cua vao luc may gio?
+      - Gio mo cua cua cua hang la bao nhieu?
+      - Ban co the cho toi biet gio mo cua cua cua hang duoc khong?
+      - Cua hang mo cua vao luc nao?
+      - Khi nao cua hang dong cua?
 
   - intent: return_policy+ask_warranty
     examples: |
       - bảo hành và đổi trả
       - đổi trả và bảo hành
       - bảo hành, đổi trả như nào
+      - Bao hanh va doi tra
+      - Doi tra va bao hanh
+      - Bao hanh, doi tra nhu nao
+
 
   - intent: thank+bye
     examples: |
@@ -326,5 +965,8 @@ nlu:
       - ok. Tạm biệt
       - giỏi quá. bye bye nha
       - thank. chào tạm biệt
-  
-      
+      - Cam on nhe. Bye
+      - ok. Tam biet
+      - Gioi qua. bye bye nha
+      - Thank. chao tam biet
+

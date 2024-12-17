@@ -124,4 +124,14 @@ stories:
       - action: utter_submit
       - action: action_track_order
 
+  - story: ask shop's address
+    steps:
+      - intent: ask_address
+      - action: utter_ask_address
+
+  - story: ask for operating time
+    steps:
+      - intent: ask_operating_time
+      - action: utter_ask_operating_time
+
 

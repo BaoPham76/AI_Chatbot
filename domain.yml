@@ -18,6 +18,8 @@ intents:
   - ask_for_watch_by_rating
   - return_policy+ask_warranty
   - thank+bye
+  - ask_address
+  - ask_operating_time
 
 
 
@@ -115,6 +117,10 @@ responses:
     - text: "2, 3 con cua\n Quý khách vừa nhắn nhưng không ăn thua. Quý khách hãy thử đưa ra lại câu hỏi khác nhé!\n Chào thân ái ôm quý khách 1 cái ❤️ ![Ảnh con cua](https://dayve.vn/wp-content/uploads/2021/09/Buoc-11_-Nho-to-mau-cho-chu-cua-them-dep-nhe.png)"
   utter_ask_warranty:
     - text: "Ngoài chế độ bảo hành quốc tế theo hãng quy định, chúng tôi có chế độ bảo hành máy lên đến 10 năm cho tất cả các dòng đồng hồ. Vui lòng giữ hóa đơn mua hàng để được bảo hành.\n Chế độ bảo hành được áp dụng trên toàn hệ thống"
+  utter_ask_address:
+    - text: "Mời quý khach ghé thăm cửa hàng tại địa chỉ 97 Đường Man Thiện, Phường Hiệp Phú, Quận 9, TP. Hồ Chí Minh.\n [🚩Bấm xem địa chỉ cụ thể!](https://maps.app.goo.gl/vfeXnBXEnvC3uqGVA)"
+  utter_ask_operating_time:
+    - text: "Chúng tôi mở cửa từ 8 giờ sáng và đóng cửa vào lúc 10 giờ tối, rất hân hạnh đón tiếp quý khách vào tất cả các ngày trong tuần."
 
 actions:
   - utter_greet
@@ -135,3 +141,4 @@ actions:
   - utter_ask_warranty
   - action_show_watches_by_rating
   - utter_ask_for_rating
+  - utter_ask_address

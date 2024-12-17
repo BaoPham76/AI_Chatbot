@@ -1,70 +1,319 @@
 [
   {
-    "text": "Tôi chọn thương hiệu Casio",
-    "entities": [
-      {
-        "start": 21,
-        "end": 26,
-        "value": "Casio",
-        "entity": "brand"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "Rolex có mẫu nào không?",
+    "text": "sau sao dong ho",
     "entities": [
       {
         "start": 0,
-        "end": 5,
-        "value": "Rolex",
-        "entity": "brand"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "Tôi muốn mua một chiếc đồng hồ nam.",
-    "entities": [],
-    "predicted_entities": [
-      {
-        "entity": "gender",
-        "start": 31,
-        "end": 34,
-        "confidence_entity": 0.9977869987487793,
-        "value": "nam",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "Tôi muốn mua đồng hồ 4 sao trở lên.",
-    "entities": [
-      {
-        "start": 21,
-        "end": 22,
-        "value": "4",
+        "end": 3,
+        "value": "sau",
         "entity": "rating"
       }
     ],
     "predicted_entities": []
   },
   {
-    "text": "Tôi tên là Hùng.",
+    "text": "sáu sao đồng hồ",
     "entities": [
       {
         "start": 0,
         "end": 3,
-        "value": "Tôi",
+        "value": "sáu",
+        "entity": "rating"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tại sao 1 ngày có 24 giờ",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "rating",
+        "start": 8,
+        "end": 9,
+        "confidence_entity": 0.9658370614051819,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rating",
+        "start": 18,
+        "end": 20,
+        "confidence_entity": 0.9894625544548035,
+        "value": "24",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Bạn đã từng đi đến Việt Nam chưa",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "gender",
+        "start": 24,
+        "end": 27,
+        "confidence_entity": 0.7657541036605835,
+        "value": "Nam",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Ba la Lien",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "Ba",
         "entity": "cust_sex"
       },
       {
-        "start": 11,
-        "end": 15,
-        "value": "Hùng",
+        "start": 6,
+        "end": 10,
+        "value": "Lien",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "rating",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.9676112532615662,
+        "value": "Ba",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_name",
+        "start": 6,
+        "end": 10,
+        "confidence_entity": 0.811149001121521,
+        "value": "Lien",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Chau ten la Long",
+    "entities": [
+      {
+        "start": 0,
+        "end": 4,
+        "value": "Chau",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 12,
+        "end": 16,
+        "value": "Long",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_name",
+        "start": 12,
+        "end": 16,
+        "confidence_entity": 0.9984632730484009,
+        "value": "Long",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Anh la Hai",
+    "entities": [
+      {
+        "start": 0,
+        "end": 3,
+        "value": "Anh",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 7,
+        "end": 10,
+        "value": "Hai",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_sex",
+        "start": 0,
+        "end": 3,
+        "confidence_entity": 0.9990180730819702,
+        "value": "Anh",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rating",
+        "start": 7,
+        "end": 10,
+        "confidence_entity": 0.8009772896766663,
+        "value": "Hai",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Anh ten Duc",
+    "entities": [
+      {
+        "start": 0,
+        "end": 3,
+        "value": "Anh",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 8,
+        "end": 11,
+        "value": "Duc",
         "entity": "cust_name"
       }
     ],
     "predicted_entities": []
+  },
+  {
+    "text": "Ten cua minh la Tuan",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Ten cua minh",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 16,
+        "end": 20,
+        "value": "Tuan",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_name",
+        "start": 8,
+        "end": 12,
+        "confidence_entity": 0.9675964117050171,
+        "value": "minh",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_name",
+        "start": 16,
+        "end": 20,
+        "confidence_entity": 0.8959102034568787,
+        "value": "Tuan",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Cô tên là Lan",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "Cô",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 10,
+        "end": 13,
+        "value": "Lan",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_sex",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.9985456466674805,
+        "value": "Cô",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_sex",
+        "start": 3,
+        "end": 6,
+        "confidence_entity": 0.6656038165092468,
+        "value": "tên",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_name",
+        "start": 10,
+        "end": 13,
+        "confidence_entity": 0.9996091723442078,
+        "value": "Lan",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Anh Bao Pham",
+    "entities": [
+      {
+        "start": 0,
+        "end": 3,
+        "value": "Anh",
+        "entity": "cust_sex"
+      },
+      {
+        "start": 4,
+        "end": 12,
+        "value": "Bao Pham",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_sex",
+        "start": 0,
+        "end": 3,
+        "confidence_entity": 0.9949638843536377,
+        "value": "Anh",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_name",
+        "start": 4,
+        "end": 7,
+        "confidence_entity": 0.9221631288528442,
+        "value": "Bao",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "tên Bảo",
+    "entities": [
+      {
+        "start": 4,
+        "end": 7,
+        "value": "Bảo",
+        "entity": "cust_name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "cust_sex",
+        "start": 0,
+        "end": 3,
+        "confidence_entity": 0.8802445530891418,
+        "value": "tên",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "cust_name",
+        "start": 4,
+        "end": 7,
+        "confidence_entity": 0.9919077157974243,
+        "value": "Bảo",
+        "extractor": "DIETClassifier"
+      }
+    ]
   }
 ]

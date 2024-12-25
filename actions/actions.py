@@ -25,6 +25,7 @@ def name_cap(text):
         tarr[idx] = tarr[idx].capitalize()
     return ' '.join(tarr)
 
+#Lưu thông tin khách hàng và trả lời
 class action_save_cust_info(Action):
     def name(self):
         return 'action_save_cust_info'
@@ -62,6 +63,8 @@ class action_save_cust_info(Action):
             SlotSet('cust_sex', name_cap(cust_sex)),
             SlotSet('bot_position', name_cap(bot_position))
         ]
+
+#Set Slot Brand
 class ActionSaveBrand(Action):
 
     def name(self) -> Text:
@@ -79,6 +82,7 @@ class ActionSaveBrand(Action):
             return [SlotSet('brand', brand)]
         return []
 
+#Set Slot Gender
 class ActionSaveGender(Action):
 
     def name(self) -> Text:
@@ -96,7 +100,7 @@ class ActionSaveGender(Action):
             return [SlotSet('gender', gender)]
         return []
 
-
+#Lấy đồng hồ từ thông tin gender và brand
 class ActionSelectWatch(Action):
 
     # Đặt tên cho hành động, sẽ được tham chiếu trong các tệp như `domain.yml` và `stories.yml`
@@ -149,6 +153,7 @@ class ActionSelectWatch(Action):
 
         return []
 
+#Kiểm tra đơn hàng
 class ActionTrackOrder(Action):
 
     def name(self) -> Text:
@@ -171,7 +176,7 @@ class ActionTrackOrder(Action):
 
         # Xử lý kết quả từ cơ sở dữ liệu
         if order_data:
-            total_money, order_status, created_at, name, phone_number, city, district, ward, apartment_number = order_data
+            total_money, payment_id, order_status, created_at, name, phone_number, city, district, ward, apartment_number = order_data
             created_at_dt = datetime.strptime(str(created_at), "%Y-%m-%d %H:%M:%S")
             estimated_delivery_dt = created_at_dt + timedelta(days=7)
             estimated_delivery = estimated_delivery_dt.strftime("%d/%m/%Y")
@@ -183,18 +188,23 @@ class ActionTrackOrder(Action):
                 2: "Đã hủy",
                 3: "Đã nhận hàng"
             }.get(order_status, "Không xác định")
+
+            payment_text = {
+                1: "Thanh toán khi nhận hàng",
+                2: "Ví điện tử Momo",
+                3: "VNPAY",
+            }.get(payment_id, "Không xác định")
             city_name = get_province_name(city)
 
             ward_name = get_ward_name(district, ward)
             response = (
                 f"Trạng thái: {status_text}.\n"
-                f"Dự kiến giao hàng: {estimated_delivery}.\n"
+                f"Dự kiến giao: {estimated_delivery}.\n"
                 f"Tên : {name_text}\n"
                 f"SDT : {phone_text}\n"
                 #bỏ ward name để che dấu huyện, nếu cần thì thêm vào
                 f"Địa chỉ: {apartment_number}, *****, *****, {city_name}\n"
-
-
+                f"Phương thức thanh toán: {payment_text}\n"
             )
         else:
             response = f"Không tìm thấy thông tin cho mã đơn hàng {order_id}. Vui lòng kiểm tra lại mã đơn hàng của bạn."
@@ -235,6 +245,7 @@ def get_ward_name(district_id, ward_id):
     return "Không xác định"
 
 
+#Tạo nút chọn brand
 class ActionShowWatchBrands(Action):
 
     def name(self) -> str:
@@ -254,7 +265,7 @@ class ActionShowWatchBrands(Action):
         )
         return []
 
-
+#Lấy đồng hồ theo số sao đánh giá
 class ActionShowWatchesByRating(Action):
     def name(self) -> Text:
         return "action_show_watches_by_rating"
@@ -289,11 +300,12 @@ class ActionShowWatchesByRating(Action):
                 results = get_watches_by_rating(min_rating)
 
                 if results:
-                    response = ""
+                    response = f"Đồng hồ có từ {min_rating} sao đánh giá trở lên\n"
                     # Duyệt qua các kết quả tìm thấy và tạo câu trả lời cho người dùng
                     for row in results:
                         product_id, product_name, price_sell, img, total_reviews, average_rating = row
                         product_link = f"http://127.0.0.1:8000/product-detail/{product_id}"
+
                         response += (
                             f"Sản phẩm: {product_name}\n"
                             f"Giá: {price_sell} VND\n"

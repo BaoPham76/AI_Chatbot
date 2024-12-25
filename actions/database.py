@@ -35,7 +35,7 @@ def get_order_details(order_id):
     cursor = connection.cursor()
 
     # Truy vấn để lấy thông tin đơn hàng
-    query = "SELECT total_money, order_status, created_at, name, phone_number, city, district, ward, apartment_number FROM orders WHERE id = %s"
+    query = "SELECT total_money, payment_id, order_status, created_at, name, phone_number, city, district, ward, apartment_number FROM orders WHERE id = %s"
     cursor.execute(query, (order_id,))
 
     # Đọc kết quả

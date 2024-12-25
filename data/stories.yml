@@ -134,4 +134,9 @@ stories:
       - intent: ask_operating_time
       - action: utter_ask_operating_time
 
+  - story: customer report bad try
+    steps:
+      - intent: report
+      - action: utter_report
+
 

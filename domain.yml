@@ -20,6 +20,7 @@ intents:
   - thank+bye
   - ask_address
   - ask_operating_time
+  - report
 
 
 
@@ -29,7 +30,7 @@ entities:
   - brand
   - gender
   - rating
-
+cd A
 slots:
   order_id:
     type: text
@@ -121,7 +122,8 @@ responses:
     - text: "Mời quý khach ghé thăm cửa hàng tại địa chỉ 97 Đường Man Thiện, Phường Hiệp Phú, Quận 9, TP. Hồ Chí Minh.\n [🚩Bấm xem địa chỉ cụ thể!](https://maps.app.goo.gl/vfeXnBXEnvC3uqGVA)"
   utter_ask_operating_time:
     - text: "Chúng tôi mở cửa từ 8 giờ sáng và đóng cửa vào lúc 10 giờ tối, rất hân hạnh đón tiếp quý khách vào tất cả các ngày trong tuần."
-
+  utter_report:
+    - text: "Rất xin lỗi vì sự bất tiện này! Shop sẽ cố gắng cải thiện để phục vụ quý khách tốt hơn."
 actions:
   - utter_greet
   - utter_bye
@@ -142,3 +144,5 @@ actions:
   - action_show_watches_by_rating
   - utter_ask_for_rating
   - utter_ask_address
+  - utter_ask_operating_time
+  - utter_report

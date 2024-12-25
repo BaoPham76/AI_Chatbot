@@ -16,6 +16,7 @@ pipeline:
     max_ngram: 4
   - name: "DIETClassifier"
     epochs: 100
+  - name: "EntitySynonymMapper"
 # Configuration for Rasa Core.
 policies:
   - name: MemoizationPolicy

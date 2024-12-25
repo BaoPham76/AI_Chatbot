@@ -395,6 +395,11 @@ nlu:
       - ten [Tuan Khang](cust_name)
   - intent: greet #chào hỏi
     examples: |
+      - Shop hỗ trợ mình với
+      - Mình cần hỗ trợ
+      - Shop có thể giúp mình không?
+      - Chào shop, mình cần hỗ trợ
+      - Shop hỗ trợ mình được không?
       - xin chào
       - chào bạn
       - hello
@@ -421,6 +426,11 @@ nlu:
       - chao 
       - co ai o day khong
       - chao buoi sang
+      - Shop ho tro minh voi
+      - Minh can ho tro
+      - Shop co the giup minh khong
+      - Chao shop, minh can ho tro
+      - Shop ho tro minh duoc khong
 
   - intent: bye #tạm biệt
     examples: |
@@ -462,6 +472,41 @@ nlu:
       - cam on em nhieu nhe
       - cam on
       - gioi
+
+  - intent: report
+    examples: |
+      - Shop hỗ trợ không được gì cả.
+      - Shop hỗ trợ mình chẳng được bao nhiêu.
+      - Shop hỗ trợ kém quá.
+      - Mình không nhận được sự hỗ trợ nào từ shop.
+      - Dịch vụ hỗ trợ thật thất vọng.
+      - Shop chẳng giúp được gì cho mình.
+      - Hỗ trợ khách hàng quá tệ.
+      - Liên hệ shop mà không giải quyết được gì.
+      - Shop làm việc thiếu chuyên nghiệp.
+      - Shop không xử lý vấn đề của mình.
+      - Mình cảm thấy không được hỗ trợ đúng mức.
+      - Shop không quan tâm đến khách hàng.
+      - Hỗ trợ kiểu này thật khó chấp nhận.
+      - Không ai ở shop giúp mình giải quyết vấn đề.
+      - Giúp gì quá tệ
+      - Không thông minh
+      - Shop ho tro khong duoc gi ca.
+      - Shop ho tro minh chang duoc bao nhieu.
+      - Shop ho tro kem qua.
+      - Minh khong nhan duoc su ho tro nao tu shop.
+      - Dich vu ho tro that that vong.
+      - Shop chang giup duoc gi cho minh.
+      - Ho tro khach hang qua te.
+      - Lien he shop ma khong giai quyet duoc gi.
+      - Shop lam viec thieu chuyen nghiep.
+      - Shop khong xu ly van de cua minh.
+      - Minh cam thay khong duoc ho tro dung muc.
+      - Shop khong quan tam den khach hang.
+      - Ho tro kieu nay that kho chap nhan.
+      - Khong ai o shop giup minh giai quyet van de.
+      - Giup gi qua te.
+      - Khong thong minh
 
   - intent: ask_func_list #hỏi chức năng
     examples: |
@@ -607,10 +652,12 @@ nlu:
       - Bạn có mẫu [Nam](gender) nào đẹp không?
       - Đồng hồ [Nam](gender)
       - Đồng hồ [Nữ](gender)
+      - Đồng hồ [Nư](gender)
       - Mua đồng hồ [Nam](gender)
       - Mua đồng hồ [Nữ](gender)
       - Tôi muốn mua đồng hồ [Nam](gender)
       - Tôi muốn mua đồng hồ [Nữ](gender)
+      - Tôi muốn mua đồng hồ [Nư](gender)
       - Tôi đang tìm một chiếc đồng hồ [Nam](gender)
       - Tôi đang tìm một chiếc đồng hồ [Nữ](gender)
       - Giúp tôi với, tôi cần mua đồng hồ [Nam](gender) tốt
@@ -638,30 +685,49 @@ nlu:
       - [nu](gender) cho dep
       - [nam](gender) cho dep
       - [unisex](gender) dep
-    
+  - synonym: nữ
+    examples: |
+      - nư
+      
 
   - intent: buy_watch #mua đồng hồ
     examples: |
       - Tôi muốn mua đồng hồ
       - Mua đồng hồ
-      - Cho tôi xem đồng hồ
+      - Cho tôi xem đồng hồ rẻ
       - Mình cần mua đồng hồ
       - Đồng hồ nào đẹp
       - Tôi muốn tìm một chiếc đồng hồ
       - Có đồng hồ nào không?
       - Bạn có mẫu đồng hồ nào không?
       - Hãy giới thiệu đồng hồ
-      - Tôi muốn mua đồng hồ đẹp
+      - Tôi muốn mua dh đẹp
+      - Đồng hồ phong cách thời trang mà phải rẻ
+      - Đh nào đẹp 
+      - Tôi muốn mua đh
+      - Muốn xem các loại đồng hồ.
+      - Có loại nào cho trẻ em không
+      - Loại đồng hồ thông minh.
       - Toi muon mua dong ho
       - Mua dong ho
-      - Cho toi xem dong ho
-      - Minh can mua dong ho
+      - Cho toi xem dong ho re
+      - Minh can mua dh
       - Dong ho nao dep
+      - dh nao dep
       - Toi muon tim mot chiec dong ho
       - Co dong ho nao khong?
       - Ban co mau dong ho nao khong?
-      - Hay gioi thieu dong ho
+      - Hay gioi thieu dh
       - Toi muon mua dong ho dep
+      - dh thoi trang phong cach ma phai re
+      - Muon xem cac loai dong ho
+      - Co loai nao cho tre em khong
+      - Loai dong ho thong minh.
+  - synonym: đồng hồ
+    examples: |
+      - dh
+      - loại
+      - đh
 
   - intent: purchase_process #cách mua hàng
     examples: |
